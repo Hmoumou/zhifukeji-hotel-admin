@@ -10,7 +10,6 @@ export default {
 
   name: 'App',
   components:{
-   
   }
 }
 </script>
@@ -70,5 +69,8 @@ export default {
   
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
+  }
+  li{
+    list-style: none;
   }
 </style>

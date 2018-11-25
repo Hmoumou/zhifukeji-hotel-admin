@@ -32,12 +32,12 @@
                 <router-link  to='/layout/houseState'  >房态管理</router-link>
               </template>
             </el-submenu>
-             <el-submenu index="5" id="item"   :class="{active:$route.name === 'order'}">
+             <el-submenu index="5" id="item">
               <template slot="title" >
                 <router-link   to='/layout/order' >订单管理</router-link>
               </template>
               <el-menu-item-group >
-                <el-menu-item index="1-1">选项1</el-menu-item>
+                <el-menu-item index="1-1"  :class="{active:$route.name === 'order'}">选项1</el-menu-item>
                 <el-menu-item index="1-2">选项2</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
@@ -106,33 +106,24 @@
   }
 }
 .sidbar{
-  border: 1px solid #f1f1f1;
-  background: #f1f1f1;
-
+  height: 100vh;
+  background: #fff;
 }
-// /deep/ .el-icon-arrow-down{
-//   display: none;
-// }
+/deep/ .el-icon-arrow-down{
+  display: none;
+}
 /deep/ .el-submenu a{ 
   display: block;
   width: 100%;
   height: 57px;
 }
+/deep/ #item{
+  border-bottom: 1px solid #f1f1f1;
+}
 /deep/ .el-submenu__title{
   padding: 0 0 0 -20px;
 }
-// /deep/ .el-menu-item-group__title{
-//   border:none;
-//   display: none;
-// }
-
-// /deep/ .el-submenu:active{
-//   background: rgb(237,243,255); 
-//   border-left: 4px solid #409eff;
-//   font-size: 16px;
-//   a{
-//     margin-left: -3px;
-//     color:#409eff;
-//   }
-// }
+/deep/ .el-menu-item-group__title{
+  display: none;
+}
 </style>

@@ -5,7 +5,7 @@
             </div>
             <span class="user fll">五星级大酒店前台小芳</span>
             <div class="menu clearfix">
-                <div class="home fll item">
+                <div class="home fll item" @click="gohome">
                     <i class="iconfont icon-index"></i>
                     <span>首页</span>
                 </div>
@@ -38,16 +38,10 @@
 let items = Array.from(document.getElementsByClassName('item'))
     export default {
         name:'Header',
-        methods(){
-            items[0].onclick = function(){
-                this.$route.push('/layout/home')
-            }
-             items[1].onclick = function(){
-                this.$route.push('/layout/home')
-            }
-             items[2].onclick = function(){
-                this.$route.push('/layout/home')
-            }
+        methods:{
+          gohome(){
+              this.$router.push('/layout/home')
+          }
         }
     }
 </script>
