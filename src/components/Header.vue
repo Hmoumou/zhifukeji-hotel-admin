@@ -49,6 +49,7 @@ let items = Array.from(document.getElementsByClassName('item'))
 <style scoped lang='scss'>
 .Header{
     padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
     box-sizing: border-box;
     width: 100%;
      height: 90px;
