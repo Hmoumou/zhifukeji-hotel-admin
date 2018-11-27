@@ -78,8 +78,65 @@ let stars = document.getElementById('stars')
 .carditem{ margin-bottom: 10px;}
 .title{ padding-left: 6px;border-left:3px solid #75b8fc;}
 .header{font-weight: 700;}
+
+.progress{
+    margin-bottom: 10px;
+    .inline{
+        float:left;
+    }
+    .arriveHotelTime{
+     .arriveHotelTimeSpan{
+       color:#409eff;
+       font-size: 15px;
+     }
+     .arriveHotelTimeTitleSpan{
+       font-size: 15px;
+     }
+    }
+    .rightTitlt{
+        float: right;
+        color:#409eff;
+        font-size: 15px;
+    }
+    .timeItem{
+        width: 75%;
+        height: 40px; 
+    }
+    .dottedLine {
+     color: #409eff;
+     border-style: dashed;
+     margin-left: 20px;
+     margin-top: 25px;
+    }
+    .inlineTimeItem{
+        position: relative;
+    }
+    .inlineTimeItemSpan{
+        color: #409eff;
+    }
+    .circle {
+        background-color: #409eff;
+        height: 15px;
+        width: 15px;
+        border-radius: 7.5px;
+        margin-top: 10px;
+        margin-left: 12px;
+    }
+    .beginTime{
+        position: absolute;
+        top: -33px;
+    }
+    .endTime{
+        position: absolute;
+        right: -420px;
+        top: -33px;
+    }
+}
+
+
  
 </style>
+
 <style>
  .el-main{
     text-align: left;
