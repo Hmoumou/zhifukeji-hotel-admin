@@ -9,6 +9,9 @@
 export default {
 
   name: 'App',
+  methods:{
+
+  },
   components:{
   }
 }

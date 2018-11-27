@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="left clearfix">
-            <div class="logo fll">
+            <div class="logo fll" @click="gohome">
                 <img src="../image/图标切图_03_06.png" alt="logo">
             </div>
             <div class="line fll">
