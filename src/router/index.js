@@ -6,6 +6,7 @@ Vue.use(Router)
 const components = {
   layout:()=>import('../views/layout/layout.vue'),
   login:()=>import('../views/login/login.vue'),
+  register:()=>import('../views/register/index.vue'),
 }
 
 export default new Router({
@@ -15,6 +16,11 @@ export default new Router({
       // redirect:'/login',
       name:'login',
       component:components.login
+    },
+    {
+      path:'/register',
+      name:'register',
+      component:components.register
     },
     {
       path: '/layout',

@@ -1,27 +1,45 @@
 <template>
     <div class="container">
-            <h1 class="title" >欢迎来到后台管理页面</h1>
-            <div class="login-box">
-                <h2 class="title-h2">请登录</h2>
-                <el-form class="login-in" ref="form" :rules="rule" :model='formData'>
-                    <el-form-item label="用户名" prop='username'>
-                        <el-input v-model="formData.username" placeholder="请输入用户名"></el-input>
-                    </el-form-item>
-                    <el-form-item label="密码" prop='password'>
-                        <el-input v-model="formData.password" type="password" placeholder="请输入密码" @keyup.enter.native="valiLogin"></el-input>
-                    </el-form-item>
-                </el-form>
-                <el-button :loading="isLoading"  @click="valiLogin" type="primary" class="btn">
-                    登录
-                </el-button>
-            </div>      
+           <div class="box clearfix">
+                <img src="../../image/login/组 17.png" class="title">
+                <div class="login-box">            
+                    <div class="box-top clearfix">
+                        <div class="left fll clearfix">
+                            <h2>后台登录</h2>
+                            <p class="fs14 fssmall small">SYSTEM BACKSTAGE LOGIN</p>                           
+                        </div>
+                        <div class="right  clearfix">
+                            <span class="fsl6 fw dsbl flr">成为代理商</span>
+                            <br>
+                            <span class="fs14 dsbl flr ">服务员热线  010-84762811</span>
+                        </div>    
+                    </div>
+                    <div class="box-btm" :model="formData">
+                        <div class="userId item">
+                            <img class="rentou" src="../../image/login/人 拷贝 2.png" alt="#">
+                            <input type="text" name="userId" placeholder="请输入登录账号">
+                        </div>
+                        <div class="password item">
+                            <img class="suo" src="../../image/login/密码 拷贝.png" alt="#">
+                            <input type="password" name="password" placeholder="请输入密码">
+                        </div>
+                        <div class="isRemember">
+                              <el-checkbox label="记住密码" name="type"></el-checkbox>
+                              <span><a href="/"></a>忘记密码</span>
+                        </div>
+                    </div>
+                    <div class="sub">
+                        <div class="login" @click="handleLogin">立即登录</div>
+                        <p class="noID">没有账号？<a class="blue register" href="/register">立即注册</a></p>
+                    </div>
+                </div>    
+            </div> 
     </div>
 </template>
 
 <script>
 export default {
   name: "login",
- 
   data(){
       const validateUsername = (rule, value, callback)=>{
           if(!value){
@@ -38,6 +56,7 @@ export default {
         }
     }
     return{
+        isRemember:false,
         formData:{
             username:'admin',
             password:'admin'
@@ -86,33 +105,107 @@ export default {
 
 <style scoped lang='scss'>
 .container {
+  position: relative;
   overflow: hidden;
   min-height: 100vh;
-  background: #545c64;
-  .title {
-    text-align: center;
-    color: #fff;
-    margin-top: 100px;
-    font-weight: 400;
-    margin-bottom: 20px;
+  z-index: 1;
+  background: url('../../image/login/登录-忘记密码-背景图-1.png')no-repeat;
+  background-size: 100% 100%;
+    
+  .box { 
+    height: 480px;  
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 60%;
+   
+     .title {
+        margin-left: 46%;
+        width: 50%;
+        height: 80px;
   }
-  .login-box {
-    background: #e8e8e8;
+  .login-box{
+    background: #fff;
     width: 380px;
-    height: 290px;
-    border: 1px solid #f1f1f1;
+    height: 400px;
+    // border: 1px solid #f1f1f1;
     border-radius: 6px;
-    padding: 40px;
-    margin: 0 auto ;
-    .title-h2{
-        font-weight: 400;
-        color:#555;
-        text-align: center;
+    .box-top{
+        padding: 10px 15px;
+        color:#fff;
+        border-top-right-radius:6px;
+        border-top-left-radius:6px;
+        background: url('../../image/login/登录-忘记密码-背景图.png')no-repeat;
+        background-size: 100% 100%;
     }
-    .btn{
-      width: 100%;
-      box-sizing:border-box;
+    .small{
+        margin-left: -46px;
     }
+    .right{
+        line-height: 1.5;
+        margin-top: 30px;
+    }
+    .box-btm{
+        padding:20px 20px;
+        .item{
+            padding: 4px ;
+            line-height: 2;
+            border-bottom: 1px solid #f1f1f1;
+            margin-bottom: 10px;
+            input{
+                width: 80%;
+                line-height: 2;
+                border: none;
+                outline: none;
+                -webkit-appearance: none;
+                background: #fff;
+            }
+        }
+        .rentou{    
+          padding: 5px 10px 0;
+            display: inline-block; 
+            width: 22px;
+            height: 22px;       
+        }
+        .suo{
+          padding: 5px 10px 0;
+
+            display: inline-block; 
+            width: 22px;
+            height: 22px;
+        }
+        .isRemember{
+            margin-left: 20px;
+            margin-bottom: 40px;
+        }
+       
+       
+    }
+     .sub{
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            .login{
+                margin: 0 auto;
+                color:#fff;
+                width: 200px;
+                height: 50px;
+                line-height: 35px;
+                background: url('../../image/login/按钮.png')no-repeat;
+                text-align: center;
+                background-size: 100% 100%;
+            }
+        }
+        .noID{
+            font-size: 16px;
+            color:#b5b5b5;
+        }
+        .register{
+            font-size: 16px;
+            color:#6aabfd;
+        }
+  }
+ 
   }
   .login-in{
       margin: 10px 0 ;

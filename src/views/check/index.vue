@@ -222,6 +222,7 @@
 .el-select__caret{
     color: #409eff;
 }
+.el-input__inner { padding: 20px; }
 </style>
 
 
