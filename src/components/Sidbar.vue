@@ -118,7 +118,7 @@
   height: 57px;
 }
 /deep/ #item{
-  border-bottom: 1px solid #f1f1f1;
+  border-top: 1px solid #f1f1f1;
 }
 /deep/ .el-submenu__title{
   padding: 0 0 0 -20px;
