@@ -1,14 +1,25 @@
 <template>
-    <div class="houseType">
-        房型管理
-    </div>
+  <div class="houseType">
+    <home-type-list/>
+  </div>
 </template>
 
 <script>
-    export default {
-        name:'houseType'
-    }
+import homeTypeList from "@/components/homeTypeManage/homeTypeList.vue";
+
+export default {
+  name: "houseType",
+  components: {
+    homeTypeList
+  },
+  data() {
+    return {};
+  },
+  methods: {},
+  created() {}
+};
 </script>
+
 
 <style scoped>
 
