@@ -65,4 +65,9 @@ export default {
   .bg{ background: #f9fbff; }
   .dsbl{ display: block; } 
   .fssmall{transform: scale(0.5)}
+  .tac{ text-align: center; }
+  .w200{ width: 200px; }
+  .w300{ width: 300px; }
+  .ce8{ color: #e8e8e8; }
+  .cb5{ color: #b5b5b5; }
 </style>

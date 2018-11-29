@@ -5,8 +5,8 @@
             <div slot="header" class="header"><span class="title">入住房间及订单</span> </div>
                 <div class="left fll">
                     <el-form :model='formData' label-width="140px" label-position='left'>
-                        <el-form-item label="房型选择" prop="houseType" >
-                            <el-select v-model="formData.houseType" placeholder="请选择房型">
+                        <el-form-item  label="房型选择" prop="houseType" >
+                            <el-select class="w300" v-model="formData.houseType" placeholder="请选择房型">
                                 <el-option label="豪华大床房" value="0"></el-option>
                                 <el-option label="双标签" value="1"></el-option>
                                 <el-option label="豪华海景大床房" value="2"></el-option>
@@ -15,29 +15,29 @@
                             </el-select> 
                         </el-form-item>
                         <el-form-item label="入住日期-离店日期" >
-                            <el-col :span="8">
+                            <el-col :span="10">
                                 <el-form-item prop="date1" >
-                                    <el-date-picker type="date"   placeholder="请选择 年-月-日" v-model="formData.checkTime" style="width: 100%;"></el-date-picker>
+                                    <el-date-picker type="date"   placeholder="请选择 年 - 月 - 日" v-model="formData.checkTime" style="width: 100%;"></el-date-picker>
                                 </el-form-item>
                             </el-col>
-                            <el-col class="line" :span="2">-</el-col>
-                            <el-col :span="8">
+                            <el-col class="line tac" :span="2">-</el-col>
+                            <el-col :span="10">
                                 <el-form-item prop="date1">
-                                    <el-date-picker type="date"  placeholder="请选择 年-月-日" v-model="formData.leaveTime" style="width: 100%;"></el-date-picker>
+                                    <el-date-picker type="date"  placeholder="请选择 年 - 月 - 日" v-model="formData.leaveTime" style="width: 100%;"></el-date-picker>
                                 </el-form-item>
                             </el-col>
                         </el-form-item>
                         <el-form-item label="房间编号" prop="houseId" >
-                            <el-input v-model="formData.houseId"></el-input>
+                            <el-input class="w300" v-model="formData.houseId"></el-input>
                         </el-form-item>
                         <el-form-item label="支付方式" prop="payType">  
-                            <el-checkbox-group v-model="formData.payType">
-                            <!-- <i class="iconfont icon-duigou2"></i> -->
-                            <el-checkbox class="active" label="微信支付" name="type" @click="handlePayToWX"></el-checkbox>
-                            <el-checkbox label="支付宝" name="type" @click="handlePayToZFB"></el-checkbox>
-                            <el-checkbox label="在线支付" name="type" @click="handlePayToOnline"></el-checkbox>
-                            <el-checkbox label="现金支付" name="type" @click="handlePayToMoney"></el-checkbox>
-                            </el-checkbox-group>
+                            <el-radio-group v-model="formData.payType">
+                                <!-- <i class="iconfont icon-duigou2"></i> -->
+                                <el-radio  label="1" name="type" @click="handlePayToWX">微信支付</el-radio >
+                                <el-radio  label="2" name="type" @click="handlePayToZFB">支付宝支付</el-radio >
+                                <el-radio  label="3" name="type" @click="handlePayToOnline">在线支付</el-radio >
+                                <el-radio  label="4" name="type" @click="handlePayToMoney">现金支付</el-radio >
+                            </el-radio-group>
                         </el-form-item> 
                     </el-form>
                 </div> 
@@ -87,7 +87,7 @@
                     check:'',
                     leaveTime:'',
                     houseId:'',
-                    payType:'',
+                    payType:'1',
                 },
                 moneyData:{
                     price:888,

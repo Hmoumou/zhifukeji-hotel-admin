@@ -5,18 +5,36 @@
                 <span class="title">今日汇总</span>
                 <el-button style="float: right; padding: 3px 0" type="text">查看全部<i class="iconfont icon-arw-top-copy"></i></el-button>
             </div>
-            <div v-for="o in 4" :key="o" class="text todayitem">
-                {{'列表内容 ' + o }}
+            <div v-for="(item,index) in today" :key="index" class="text todayitem">
+                {{item.type}}
                 <br/>
-                <div class="num">{{0}}</div>
+                <div class="num">{{item.num}}</div>
             </div>
         </el-card>
     </div>
 </template>
 
 <script>
+
     export default {
         name:'todaySummary',
+        data(){
+            return{
+                today:[{
+                    type:'未处理',
+                    num:2
+                },{
+                    type:'待审核',
+                    num:13
+                },{
+                    type:'今日入住',
+                    num:12
+                },{
+                    type:'今日新订',
+                    num:22
+                }]
+            }
+        }
 
     }
 </script>

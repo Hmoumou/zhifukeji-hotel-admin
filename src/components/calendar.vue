@@ -130,7 +130,8 @@
     font-size: 20px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    background: #409eff;
+    // background: url('../image/首页/矩形 1 拷贝 54.png')no-repeat;
+    // background-size: 100% 100%; 
     .right{
         float: right;
         font-size: 14px;
