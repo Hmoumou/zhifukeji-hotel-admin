@@ -87,7 +87,7 @@
                                 <th>合计金额</th>
                                 <td class="blue">RMB {{orderData.totalMoney}}</td>
                                  <th>优惠价格</th>
-                                <td class="blue fw fs16">RMB {{orderData.discounts}}</td>
+                                <td class="blue fw fs14">RMB {{orderData.discounts}}</td>
                             </tr>
                         </table>
                          <table class="table4">
@@ -104,29 +104,28 @@
                 <span class="span flr">共{{searchData.orderDetails.length}}条消息 </span>
                 <span class="span">查询 "{{searchData.text}}"</span>
               </div>
-              <div class="searchContent clearfix" v-for="o in 4" :key="o">
+              <el-scollbar class="scollbar">
+                  <div class="searchContent clearfix" v-for="o in 4" :key="o">
                   <el-card class='clearfix  active parts'>
                       <div class="type clearfix part">
                           <span class="flr overTime">{{searchData.overTime}}</span>
                           <el-button type='primary' class="none">失效</el-button>
-                          <span class="blue">{{searchData.orderId}}</span>
-                         
+                          <span class="blue">{{searchData.orderId}}</span>       
                       </div>
                       <div class="roomType part">
-                          <span class="flr">共<span class="blue">1</span>间</span>
-                          <strong class="strong">豪华大床房</strong>
-                          
+                          <span class="flr fs14">共 <span class="blue">1</span> 间</span>
+                          <strong class="fw fs14">豪华大床房</strong>     
                       </div>
-                      <div class="user">{{searchData.username}}</div>
-                      <div class="totalMoney part">{{searchData.totalMoney}}</div>
-                      <div class="startTime clearfix">
-                          <strong class="flr">共<span class="blue">1</span>晚</strong>
+                      <div class="user mb5 fs14">{{searchData.username}}</div>
+                      <div class="totalMoney part fs14">{{searchData.totalMoney}}</div>
+                      <div class="startTime clearfix fs14">
+                          <div class="flr fw fs14">共 <span class="blue">1</span> 晚</div>
                           <span class="blue">{{searchData.startTime}}</span> 至 
                           <span class="blue">{{searchData.endTime}}</span>
-                          
                       </div>
-                  </el-card>
-              </div>
+                      </el-card>
+                </div>
+             </el-scollbar>
           </div>
       </el-card>  
     </div>
@@ -177,7 +176,7 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-.active{ border: 1px solid #409eff;}
+.active{ border: 1px solid #9dccfa;}
 .parts{
     margin-bottom: 15px;
     background: #edf3ff;
@@ -225,14 +224,17 @@ export default {
          padding-right: 12px;
          width:35%;
          height: 100vh;
-         overflow-y: scroll;
+         overflow-y: hidden;
+        // overflow: hidden;
+        .scollbar{
+            height: 100%;
+        }
        
          .part{ margin-bottom: 10px; }
          .searchTitle{margin-bottom: 15px;}
          .span{ font-size: 12px; color:#c1c1c1;}
          .overTime{ font-size: 12px; line-height: 28px  }
          .totalMoney{color:#c6c9d0; line-height: 1.2;}
-         .strong{ font-weight: 900; font-size: 18px } 
      }
      .orderDetail-right{
          width: 60%;
@@ -241,20 +243,20 @@ export default {
         }
         .table{  
             table{
-                margin-bottom: 10px;
+                margin-bottom: 15px;
                 text-align: center;
                 border: 1px solid  #f7faff;
                 width: 100%;
-                th{ height: 50px; width:22%; background: #f7faff; }
-                td{ height: 50px; width:33%;font-size: 12px }
+                th{ height: 45px; width:22%; background: #f7faff; font-size: 14px; }
+                td{ height: 45px; width:33%;font-size: 12px }
             }
-            .desc{height: 80px; width:100%;
-                th{ height: 80px; width:22%; background: #f7faff; }
-                td{ width:78%; height: 80px; font-size: 16px ; color:#b9b9b9;} 
+            .desc{height: 60px; width:100%;
+                th{ height: 60px; width:22%; background: #f7faff; }
+                td{ width:78%; height: 60px; font-size: 14px ; color:#b9b9b9;} 
                  }
             .table4 { 
-                th{ height: 50px; width:22%; background: #f7faff; }
-                td{ width:78%; height: 50px; font-size: 16px ; color:#b9b9b9; }  }
+                th{ height: 45px; width:22%; background: #f7faff; }
+                td{ width:78%; height: 45px; font-size: 14px ; color:#b9b9b9; }  }
         }
      }
     }
@@ -268,5 +270,5 @@ export default {
 .el-main { text-align: left; line-height: 1;}
 .el-input__inner { padding: 0;background: #f9fbff;border: none;}
 .el-button{ border-radius: 20px;  padding: 6px 20px; font-size: 14px;}
-.el-button--text {font-size: 16px; margin-top: 9px;}
+.el-button--text {font-size: 14px; margin-top: 9px;}
 </style>

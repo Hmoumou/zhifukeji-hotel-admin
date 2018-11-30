@@ -70,4 +70,5 @@ export default {
   .w300{ width: 300px; }
   .ce8{ color: #e8e8e8; }
   .cb5{ color: #b5b5b5; }
+  .mb5{margin-bottom: 5px;}
 </style>

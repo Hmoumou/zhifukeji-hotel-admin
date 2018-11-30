@@ -46,22 +46,23 @@
             .todayitem{
                 overflow: hidden;
                 width: 22.5%;
-                font-size: 16px;
+                font-size: 14px;
                 padding:5px; 
                 line-height: 2;
                 border-radius: 4px;
                 margin-right: 5px;
-                background: #409eff;
+                background: url('../image/home/box.png')no-repeat;
+                background-size: 100% 100%;
                 display: inline-block;
             }
             .num{
-                font-size: 18px;
+                font-size: 16px;
                 margin-right: 5px;
-                font-weight: 700;
+                font-weight: 550;
                 float: right;
             }
         }
  .carditem{ margin-bottom: 10px;}
-.title{ padding-left: 6px;border-left:3px solid #75b8fc;}
+.title{ padding-left: 6px; border-left:3px solid #75b8fc;}
 .header{font-weight: 700;}
 </style>

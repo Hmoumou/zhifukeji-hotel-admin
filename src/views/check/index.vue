@@ -1,6 +1,6 @@
 <template>
     <div class="check">
-      <div class="top"> 
+        <div class="top"> 
           <el-card class="box-card carditem clearfix">
             <div slot="header" class="header"><span class="title">入住房间及订单</span> </div>
                 <div class="left fll">
@@ -47,6 +47,7 @@
                         <div class="item">时间<span  class="data">{{moneyData.long}}/晚</span></div>
                         <div class="item">押金 <span class="data">RMB {{moneyData.earnest}}</span></div>
                         <div class="lastItem">总金额<span class="lastData">RMB {{moneyData.total}}/晚</span></div>
+                        <div class="btn" @click="handleCheck">入住</div>
                     </div>            
                 </div>
             </el-card>
@@ -74,6 +75,20 @@
             </el-card>
            
         </div>
+        <div class="box" v-if="Yes">
+            <div class="box-inner">
+                <div class="face">
+                    <span>{{username}}</span>
+                    <span>已成功入住{{houseType}} {{201}}室</span>
+                    <div class="btn" @click="handleOk">确定</div>
+                </div>
+                <div class="back">
+
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </template>
 
@@ -82,6 +97,8 @@
         name:'Check',
         data(){
             return{
+                Yes:false,
+                isOk:true,
                 formData:{
                     houseType:'',
                     check:'',
@@ -105,20 +122,28 @@
         },
         methods:{
             handlePayToWX(){
-
+                console.log('微信');
             },
             handlePayToZFB(){
-
+                console.log('支付宝');
             },
             handlePayToOnline(){
-
+                console.log('在线');
             },
             handlePayToMoney(){
-
+                console.log('现金支付');
             },
             handleAdduser(){
-
+                console.log('添加入住人');
+            },
+            handleCheck(){
+               
+               console.log('小二，住店');
+            },
+            handleOk(){
+                this.isOk = false;
             }
+
         }
     }
 </script>
@@ -130,7 +155,7 @@
 }
 .top{
     .icon-duigou2{
-        font-size: 16px;
+        font-size: 14px;
         position: absolute;
         top: 0;
         color: #409eff;
@@ -147,7 +172,7 @@
     }
     .right{
         box-sizing: border-box;
-        padding: 40px 20px 20px 50px;
+        padding: 30px 20px 20px 50px;
         // border-left: 1px virtual #f1f1f1;
         width: 400px;
         border-left: 1px solid #f1f1f1;
@@ -156,23 +181,40 @@
                 float: right;
             }
             .item{
-                font-size: 20px;
-                font-weight: 700;
-                margin-bottom: 20px;
+                font-size: 14px;
+                font-weight: 550;
+                margin-bottom: 15px;
             }
             .data{
                 color:#409eff;
             }
             .lastItem{
-                font-size: 24px;
-                font-weight: 800;
+                font-size: 14px;
+                font-weight: 700;
+                 margin-bottom: 50px;
             }
         .lastData{
+                font-size: 16px;
                 color:#409eff;
                 font-weight: 900;
         }
         
         }
+    }
+    .btn{
+        font-size: 14px;
+        box-sizing: border-box;
+        cursor: pointer; 
+        margin: 0 auto;
+        color:#fff;
+        width:60%;
+        margin-top: 20px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 20px;
+        font-weight: 550px;
+        background: url('../../image/home/btn1.png')no-repeat;
+        text-align: center;
     }
 
 }

@@ -127,11 +127,11 @@
     line-height: 42px;
     padding: 0 12px;
     color: #fff;
-    font-size: 20px;
+    font-size: 16px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    // background: url('../image/首页/矩形 1 拷贝 54.png')no-repeat;
-    // background-size: 100% 100%; 
+    background: url('../image/home/title.png')no-repeat;
+    background-size: 100% 100%; 
     .right{
         float: right;
         font-size: 14px;
@@ -159,6 +159,7 @@
         width: 90px;
         position: relative;
         color: #95a7fe;
+        font-size: 14px;
         .line{
             position: absolute;
             top: 21px;
@@ -185,10 +186,10 @@
         line-height: 44px;
         text-align: center;
         font-weight: 700;
-        font-size: 16px;
+        font-size: 14px;
     }
     .week{
-        font-size: 13px;
+        font-size: 12px;
         text-align: center;
     }
 }
@@ -235,7 +236,7 @@
 #full{
     background: #fd7e92;
     color: #fff;
-    font-size: 14px;
+    font-size: 12px;
 }
 // 暂不可预订
 #no-order{
@@ -244,6 +245,6 @@
     line-height: 1.2 !important;
     padding: 6px 4px 0 !important;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 12px;
 }
 </style>

@@ -8,15 +8,15 @@
             <div v-for="o in 3" :key="o" class="text orderitem">      
                 <div class="auditLeave-top ">
                     <div class="first clearfix">
-                            <span class="flr">共<span class="time">{{1}}</span>晚</span>
-                        <span class="name">梁朝伟</span>
+                            <span class="flr fs14">共<span class="time">{{1}}</span>晚</span>
+                        <span class="name fs14 fw">梁朝伟</span>
                     </div>
-                    <span class="summoney">{{1500000}}</span>
-                    <strong>豪华大床房</strong>
+                    <span class="summoney fs12 mb5">{{1500000}}</span>
+                    <div class="fs14 fw">豪华大床房</div>
                 </div>
                 <div class="auditLeave-btm">
                     <el-button type="primary">已入住</el-button>
-                    <el-button>未入住</el-button>                         
+                    <el-button>续住</el-button>                         
                 </div>
             </div>
         </el-card>

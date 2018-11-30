@@ -7,39 +7,39 @@
             </div>
              <div class="progress clearfix" >
                         <div class="inline arriveHotelTime"> 
-                            <span class="arriveHotelTimeSpan">5月12日</span> 
+                            <span class="arriveHotelTimeSpan fs14">5月12日</span> 
                             <br/>
-                            <span class="arriveHotelTimeTitleSpan">预计到店时间</span>
+                            <span class="arriveHotelTimeTitleSpan fs14">预计到店时间</span>
                         </div>
                          <div class="inline timeItem"> 
                             <hr size=1 class="dottedLine">     
                             <div  v-for="i in 2" :key="i" class="inline inlineTimeItem"  >
                                 <div v-if="i == 1" class="beginTime">
-                                    <span class="inline inlineTimeItemSpan">09:30</span> 
+                                    <span class="inline inlineTimeItemSpan fs14">09:30</span> 
                                     <br/>
                                     <img class="circle">
                                 </div>
                                 <div v-if="i == 2" class="endTime">
-                                    <span class="inline inlineTimeItemSpan">12:10</span>
+                                    <span class="inline inlineTimeItemSpan fs14">12:10</span>
                                     <br/>
                                     <img class="circle"> 
                                 </div>
                             </div>
                         </div>
                         <div class="inline rightTitlt"> 
-                            <span class="arriveHotelTimeSpan">仅显示</span> 
+                            <span class="arriveHotelTimeSpan fs14">仅显示</span> 
                             <br/>
-                            <span class="arriveHotelTimeSpan">三条信息</span>
+                            <span class="arriveHotelTimeSpan fs14">三条信息</span>
                         </div>
                     </div>
             <div v-for="o in 3" :key="o" class="text orderitem">      
                 <div class="auditLeave-top ">
                     <div class="first clearfix">
-                            <span class="flr">共<span class="time">{{1}}</span>晚</span>
-                        <span class="name">梁朝伟</span>
+                            <span class="flr fs14">共 <span class="time">{{1}}</span> 晚</span>
+                        <span class="name fs14 fw">梁朝伟</span>
                     </div>
-                    <span class="summoney">{{1500000}}</span>
-                    <strong>豪华大床房</strong>
+                    <span class="summoney fs12 mb5">{{1500000}}</span>
+                    <div class="fw fs14" >豪华大床房</div>
                 </div>
                 <div class="auditLeave-btm">
                     <el-button type="primary">已入住</el-button>
@@ -77,7 +77,6 @@
                     display: block;
                 }
             }
-            .name{font-weight: 700;}
             .time{
                 display: inline-block;
                 font-size: 12px;

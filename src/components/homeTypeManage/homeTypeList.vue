@@ -25,7 +25,7 @@
           <img
             src="@/image/0001.jpg"
             style="width: 100px; height:100px; float: left; margin-right: 15px;"
-          ></img>
+          >
           <div class="homeInfo clearfix">
             <strong>豪华大床房</strong>
             <div class="infoTitleDiv">
@@ -71,7 +71,7 @@ export default {
   flex-wrap: wrap;
 }
 .homeItem {
-  width: 30%;
+  width: 29%;
   border: 1px solid #f1f1f1;
   padding: 15px;
   margin: 5px;
