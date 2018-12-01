@@ -1,5 +1,5 @@
 <template>
-  <div class="lodgerkanban">
+  <div class="homeTypeList">
     <el-card class="box-card  carditem">
       <div
         slot="header"
@@ -10,6 +10,7 @@
           style="float: right; padding: 5px ; width: 150px"
           type="primary"
           round
+          @click="showCreateView"
         >新建房型</el-button>
       </div>
       <div class="homeItemList">
@@ -60,7 +61,15 @@
 
 <script>
 export default {
-  name: "lodgerKB"
+  name: "homeTypeList",
+  methods: {
+    showCreateView() {
+      this.$emit("showCreateView");
+    }
+  },
+  created(){
+   
+  }
 };
 </script>
 
