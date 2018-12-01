@@ -6,22 +6,24 @@
             <span class="user fll">五星级大酒店前台小芳</span>
             <div class="menu clearfix">
                 <div class="home fll item" @click="gohome">
-                    <i class="iconfont icon-index"></i>
+                    <div class="iconfont icon1"></div>
+                    <!-- <img src="../image/首页-通知-退出/首页 (2) 拷贝.png" alt=""> -->
                     <span>首页</span>
                 </div>
                 <div class="inform fll item">
-                    <i class="iconfont icon-tongzhi2"></i>
+                    <div class="iconfont icon2"><div class="message fs12">{{num}}</div></div>
                     <span>通知</span>
+                    
                 </div>
                 <div class="logout fll item">
-                    <i class="iconfont icon-tuichu2"></i>
+                    <div class="iconfont icon3"></div>
                     <span>退出</span>
                 </div>
             </div>
         </div>
         <div class="left clearfix">
             <div class="logo fll" @click="gohome">
-                <img src="../image/图标切图_03_06.png" alt="logo">
+                <img src="../image/首页-通知-退出/图标切图_03_06.png" alt="logo">
             </div>
             <div class="line fll">
             </div>
@@ -38,6 +40,11 @@
 let items = Array.from(document.getElementsByClassName('item'))
     export default {
         name:'Header',
+        data(){
+            return{
+                num:'5'
+            }
+        },
         methods:{
           gohome(){
               this.$router.push('/layout/home')
@@ -108,53 +115,65 @@ let items = Array.from(document.getElementsByClassName('item'))
         }
         .user{
             margin: 0 20px;
-            line-height: 2.6;
-            font-size: 16px;
-            font-weight: 700;
+            line-height: 2.8;
+            font-size: 15px;
+            font-weight: 550;
         }
-        .home{
-            line-height: 1.2;
-            width: 40px;
-            height: 45px;
-            .iconfont{
-                font-size: 24px;
-                display: block;
-                color:#409eff;
+        .menu{
+             .iconfont{
+               
+                cursor: pointer;
+                box-sizing: border-box;
+                line-height: 1.2;
+                width: 40px;
+                height: 50px;
+                margin-right: 24px;
+                padding:0px 12px;
+
             }
             span{
-                font-size: 14px;
-                color:#888;
-            }
-        }
-         .logout{
-            line-height: 1.2;
-            width: 40px;
-            height: 45px;
-            .iconfont{
-                font-size: 24px;
                 display: block;
-                color:#409eff;
-            }
-            span{
+                margin-left: -24px;
                 font-size: 14px;
-                color:#888;
-            }
-        }
-         .inform{
-             margin: 0 6px;
-            line-height: 1.2;
-            width: 40px;
-            height: 45px;
-            .iconfont{
-                font-size: 24px;
+                color:#b2b2b2;
+                margin-top: 5px;
+             }      
+            .icon1{
+                background: url('../image/首页-通知-退出/首页.png')no-repeat;
+                background-size: 100% 100%;
                 display: block;
-                color:#409eff;
+                width: 24px;
+                height: 26px;
             }
-            span{
-                font-size: 14px;
-                color:#888;
+           
+             .icon2{
+                position: relative;
+                background: url('../image/首页-通知-退出/通知.png')no-repeat;
+                background-size: 100% 100%;
+                display: block;
+                width: 24px;
+                height: 26px;
             }
+             .icon3{
+               background: url('../image/首页-通知-退出/关机.png')no-repeat;
+                background-size: 100% 100%;
+                display: block;
+                width: 24px;
+                height: 26px;
+            }
+             .message{
+                position: absolutel;
+                top: 0px;
+                right: 2px;
+                background: #f00;
+                color:#fff;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+            }    
         }
+       
+       
     }
    
 }
