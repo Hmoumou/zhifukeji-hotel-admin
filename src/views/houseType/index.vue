@@ -5,7 +5,7 @@
     </div>
 
     <div v-if="isShowCreate">
-      <house-type-new-create  />
+      <house-type-new-create @showManageView="showManageView" />
     </div>
   </div>
 </template>
@@ -28,6 +28,9 @@ export default {
   methods: {
     showCreateView() {
       this.isShowCreate = true;
+    },
+    showManageView(){
+      this.isShowCreate = false;
     }
   },
   created() {}

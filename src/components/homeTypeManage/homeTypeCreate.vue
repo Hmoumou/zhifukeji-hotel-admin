@@ -32,10 +32,9 @@
             </el-select> 
         </el-form-item>
         <el-form-item label="描述" prop="describe">
-            <el-input class="describeInfo"  placeholder=' 大床1.8米'></el-input>
+            <el-input class="describeInfo" type="textarea" :rows="5" v-model="formRightData.describe" placeholder='大床1.8米'></el-input>
         </el-form-item>
       </el-form>
-      <i class="dottedLine"></i>
       <!-- 左表格 -->
       <el-form  class="leftForm" :model='formLeftData' label-width="100px" label-position='left'>
         <el-form-item label="面积" prop="houseArea">
@@ -130,16 +129,12 @@ export default {
 .leftForm {
     float: left;
     margin-left: 1%;
-    width: 45%;
+    margin-bottom: 30px;
+    width: 48%;
+    border-right:1px dashed rgb(204, 197, 197);
     .detailInfo {
         width: 60%;
     }
-}
-.dottedLine {
-    float: right;
-    width: 1px;
-    height: 80%;
-    border-right:1px dashed rgb(90, 89, 89);
 }
 
 /deep/ .el-form-item__label{
