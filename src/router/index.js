@@ -50,7 +50,7 @@ export default new Router({
           component:()=>import('../views/houseType/index.vue'),
           meta:{
             title:'房型管理'
-          },    
+          }, 
         },
         {
           path: 'houseState',

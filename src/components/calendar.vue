@@ -130,7 +130,7 @@
     font-size: 16px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    background: url('../image/home/title.png')no-repeat;
+    background: url('../image/home/title.png') no-repeat;
     background-size: 100% 100%; 
     .right{
         float: right;
