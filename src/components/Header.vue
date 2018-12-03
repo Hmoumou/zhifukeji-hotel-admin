@@ -7,13 +7,15 @@
             <div class="menu clearfix">
                 <div class="home fll item" @click="gohome">
                     <div class="iconfont icon1"></div>
-                    <!-- <img src="../image/首页-通知-退出/首页 (2) 拷贝.png" alt=""> -->
                     <span>首页</span>
                 </div>
                 <div class="inform fll item">
-                    <div class="iconfont icon2"><div class="message fs12">{{num}}</div></div>
+                    <div class="iconfont icon2">
+                        <div class="message">
+                          <div class="num">{{num}}</div>
+                        </div>
+                    </div>
                     <span>通知</span>
-                    
                 </div>
                 <div class="logout fll item">
                     <div class="iconfont icon3"></div>
@@ -162,14 +164,20 @@ let items = Array.from(document.getElementsByClassName('item'))
                 height: 26px;
             }
              .message{
-                position: absolutel;
-                top: 0px;
-                right: 2px;
+                position: absolute;
+                top: -2px;
+                right: 0px;
                 background: #f00;
                 color:#fff;
-                width: 14px;
-                height: 14px;
-                border-radius: 50%;
+                width: 13px;
+                height: 13px;
+                border-radius: 50%;             
+                .num{
+                    color:#fff;
+                    font-size: 12px;
+                    -webkit-transform: scale(0.90);
+                }
+
             }    
         }
        

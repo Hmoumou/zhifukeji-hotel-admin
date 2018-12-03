@@ -104,8 +104,8 @@
                 <span class="span flr">共{{searchData.orderDetails.length}}条消息 </span>
                 <span class="span">查询 "{{searchData.text}}"</span>
               </div>
-              <el-scollbar class="scollbar">
-                  <div class="searchContent clearfix" v-for="o in 4" :key="o">
+            <el-scrollbar class="scollbar">
+                <div class="searchContent clearfix" v-for="o in 4" :key="o">
                   <el-card class='clearfix  active parts'>
                       <div class="type clearfix part">
                           <span class="flr overTime">{{searchData.overTime}}</span>
@@ -123,9 +123,9 @@
                           <span class="blue">{{searchData.startTime}}</span> 至 
                           <span class="blue">{{searchData.endTime}}</span>
                       </div>
-                      </el-card>
+                  </el-card>
                 </div>
-             </el-scollbar>
+            </el-scrollbar>
           </div>
       </el-card>  
     </div>
@@ -225,7 +225,6 @@ export default {
          width:35%;
          height: 100vh;
          overflow-y: hidden;
-        // overflow: hidden;
         .scollbar{
             height: 100%;
         }

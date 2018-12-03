@@ -38,8 +38,8 @@
 </script>
 
 <style scoped lang='scss'>
-     .orderitem{
-                width:28.5%;
+     .orderitem{  
+                width: 184px;
                 border: 1px solid #f1f1f1;
                 padding: 10px;
                 margin-right: 8px;

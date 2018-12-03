@@ -5,36 +5,24 @@
                 <span class="title ">点评/回答</span>
             </div>
             <p class="subtitle fw fs14">最新点评</p>
-              <div v-for="o in 1" class="text commentitem" :key='o' :model="commentData" v-if="haveValue">
+            <div  v-for="(l,index) in 2" class="text commentitem" :key='index' :model="commentData">
                 <div class="comment-title clearfix">
                     <span class="flr fs12">{{commentData.commentTime}}</span>
                     <h4>{{commentData.username}}</h4> 
-                    <ul class="comment-star clearfix" >
-                        <li id="stars" class="item" :value="commentData.starnum"  v-for="o in 5" :key='o'></li>
-                    </ul> 
+                   <Star :score='commentData.score' />
                     <p class="comment">{{commentData.comment}}</p>
-                    <div class="adminAsk">
+                    <div class="adminAsk" v-if="commentData.adminAsk">
                         <span class="blue fw fs14">回复</span>
                         <p class="fs14">{{commentData.adminAsk}}</p>
                     </div>
-                </div>                   
-            </div>
-            <div  v-for="o in 2" class="text commentitem" :key='o' :model="commentData">
-                <div class="comment-title clearfix">
-                    <span class="flr fs12">{{commentData.commentTime}}</span>
-                    <h4>{{commentData.username}}</h4> 
-                    <ul class="comment-star clearfix" >
-                        <li id="stars" class="item" :value="commentData.starnum"  v-for="o in 5" :key='o'></li>
-                    </ul> 
-                    <p class="comment">{{commentData.comment}}</p>
-                    <div class="box-Reply" v-if="isShow" > 
+                    <div class="box-Reply"  ref="huifubox"  v-else-if="isShow"> 
                         <p>{{commentData.replay}}</p>                        
                         <textarea :value='commentData.replay' name="reply" class="reply" id="reply" cols="42" rows="5">
                         </textarea>
                         <el-button @click="handleYes" type='primary'>提交</el-button>
-                        <el-button @click="handleNo">取消</el-button>  
+                        <el-button @click="handleNo(index)">取消</el-button>  
                     </div>
-                    <el-button v-else class="flr" type='primary' @click="handleReply">
+                    <el-button  v-else class="flr" type='primary' @click="handleReply(index)">
                                 回复
                     </el-button>                   
                 </div>                   
@@ -44,11 +32,14 @@
 </template>
 
 <script>
-let stars = document.getElementById('stars')
+import Star from '@/components/star.vue'
 let commentitems = document.getElementsByClassName('commentitem')
 
     export default {
         name:'home',
+        components:{
+            Star
+        },
         data(){
             return{
                 haveValue:true,
@@ -59,19 +50,27 @@ let commentitems = document.getElementsByClassName('commentitem')
                     starnum:3,
                     commentTime:'2018-01-19',
                     comment:'店家超好非常满意的一次入住，感谢！',
-                    adminAsk:'你的好评是我们最大的动力'
+                    adminAsk:'今天是个好日子',
+                    score:3.6   
                 }
             }
         },
         methods:{
-            handleReply(){
+            handleReply(index){
+                console.log(index)
                 this.isShow = true
+                this.$nextTick(() => {
+                    // console.log(this.$refs.huifubox[index])
+                    this.$refs.huifubox[index].style.display = 'block'
+                })
+                // this.isShow = true
             },
             handleYes(){
                 
             },
-            handleNo(){
+            handleNo(index){
                 this.isShow = false
+                this.$refs.huifubox[index].style.display = 'none'
             }
         },
         created(){
@@ -113,6 +112,9 @@ let commentitems = document.getElementsByClassName('commentitem')
             p{
                 color:#999;
             }
+        }
+        .box-Reply{
+            display: none;
         }
 .carditem{ margin-bottom: 10px;}
 .title{ padding-left: 6px;border-left:3px solid #75b8fc;}

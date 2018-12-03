@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <div class="title">
+        <div class="title1">
             <div class="right">xx-xx 至 xx-xx</div>
             七日化房间管理
         </div>
@@ -122,7 +122,7 @@
     // background: #f1f1f1;
 }
 // 头部标题
-.title{
+.title1{
     height: 42px;
     line-height: 42px;
     padding: 0 12px;

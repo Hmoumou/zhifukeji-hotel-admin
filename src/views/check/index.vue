@@ -2,7 +2,7 @@
     <div class="check">
         <div class="top"> 
           <el-card class="box-card carditem clearfix">
-            <div slot="header" class="header"><span class="title">入住房间及订单</span> </div>
+            <div slot="header" class="header clearfix"><span class="title">入住房间及订单</span> </div>
                 <div class="left fll">
                     <el-form :model='formData' label-width="140px" label-position='left'>
                         <el-form-item  label="房型选择" prop="houseType" >
@@ -30,14 +30,23 @@
                         <el-form-item label="房间编号" prop="houseId" >
                             <el-input class="w300" v-model="formData.houseId"></el-input>
                         </el-form-item>
-                        <el-form-item label="支付方式" prop="payType">  
-                            <el-radio-group v-model="formData.payType">
-                                <!-- <i class="iconfont icon-duigou2"></i> -->
-                                <el-radio  label="1" name="type" @click="handlePayToWX">微信支付</el-radio >
-                                <el-radio  label="2" name="type" @click="handlePayToZFB">支付宝支付</el-radio >
-                                <el-radio  label="3" name="type" @click="handlePayToOnline">在线支付</el-radio >
-                                <el-radio  label="4" name="type" @click="handlePayToMoney">现金支付</el-radio >
-                            </el-radio-group>
+                        <el-form-item label="支付方式" prop="payType" class="payType">  
+                            <label :class="{ active: checkPay == 1}">         
+                                <input :value="1" type="radio" v-model="checkPay" class="radio-input" name="pay"> 
+                                <div class="dui"></div>
+                            </label>
+                             <label :class="{ active: checkPay == 2}">         
+                                <input :value="2" type="radio" v-model="checkPay" class="radio-input" name="pay"> 
+                                 <div class="dui"></div>
+                            </label>
+                             <label :class="{ active: checkPay == 3}">         
+                                <input :value="3" type="radio" v-model="checkPay" class="radio-input" name="pay"> 
+                                 <div class="dui"></div>
+                            </label>
+                             <label :class="{ active: checkPay == 4}">         
+                                <input :value="4" type="radio" v-model="checkPay" class="radio-input" name="pay">
+                                 <div class="dui"></div>
+                            </label>
                         </el-form-item> 
                     </el-form>
                 </div> 
@@ -117,7 +126,8 @@
                     username:'',
                     IDcard:'',
                     phone:''
-                }
+                },
+                checkPay:2,
             }
         },
         methods:{
@@ -149,11 +159,52 @@
 </script>
 
 <style scoped lang='scss'>
-.active{
-    position: relative;
-    border: 1px solid #409eff;   
-}
+
 .top{
+    .payType{
+        label{  
+            box-sizing: border-box;
+            display: inline-block;
+            width: 92px;
+            height: 56px;
+            margin-right: 15px;
+            border: 1px solid transparent;
+            &:nth-of-type(1) {
+                background: url('../../image/办理入住/微信支付.png')no-repeat #f1f1f1 center;
+                background-size: 75%;
+
+            }
+            &:nth-of-type(2) {
+                background: url('../../image/办理入住/支付宝.png')no-repeat #f1f1f1 center;
+                background-size: 75%;
+            }
+            &:nth-of-type(3) {
+                background: url('../../image/办理入住/银联支付.png')no-repeat #f1f1f1 center;
+                background-size: 75%;
+            }
+            &:nth-of-type(4) {
+                background: url('../../image/办理入住/现金支付.png')no-repeat #f1f1f1 center;
+                background-size: 75%;
+            }
+        }
+        .active{
+            position: relative;
+            border: 1px solid #518dfd ;
+        }
+        .active .dui{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 14px;
+            height: 14px;
+            // background: #518dfd;
+            background: url('../../image/办理入住/对.png')no-repeat #518dfd center;
+            background-size: 85%;
+        }
+        input{
+           display: none
+        }
+    }
     .icon-duigou2{
         font-size: 14px;
         position: absolute;
@@ -170,11 +221,14 @@
             right:-20px;
         }
     }
+    .left{
+        width: 55%;
+    }
     .right{
         box-sizing: border-box;
         padding: 30px 20px 20px 50px;
         // border-left: 1px virtual #f1f1f1;
-        width: 400px;
+        width: 40%;
         border-left: 1px solid #f1f1f1;
         .right-data{
             span{
@@ -225,7 +279,7 @@
         width: 48%;
     }
      .btm-right{
-        border: 1px dashed #409eff;
+        border: 1px dashed #518dfd;
         box-sizing: border-box;
         position: relative;
         float: right;
@@ -239,12 +293,13 @@
         .icon-jiahao1{
             margin-left: 45%;
             font-size: 50px;
-            color:#409eff;
+            color:#518dfd;
         }
         .add{
+           font-size: 14px;
             margin-top: 10px;
             display: block;
-            color: #409eff;
+            color: #518dfd;
             text-align: center;
         }
     }

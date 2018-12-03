@@ -50,10 +50,8 @@ export default {
     line-height: 160px;
   } 
   body > .el-container { margin-bottom: 40px;}
-  
   .el-container:nth-child(5) .el-aside,
   .el-container:nth-child(6) .el-aside {line-height: 260px}
-  
   .el-container:nth-child(7) .el-aside {line-height: 320px;}
   li{list-style: none;}
   .blue{color:#409eff; line-height: 1; font-size: 12px; }
@@ -71,4 +69,7 @@ export default {
   .ce8{ color: #e8e8e8; }
   .cb5{ color: #b5b5b5; }
   .mb5{margin-bottom: 5px;}
+  .carditem{ margin-bottom: 10px;}
+  .title{ padding-left: 6px;border-left:3px solid #75b8fc;}
+  .header{font-weight: 700;}
 </style>

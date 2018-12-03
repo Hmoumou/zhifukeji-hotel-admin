@@ -8,8 +8,7 @@
                <calendar/>
            </el-card>
            <!-- 评价/回复 -->
-           <userComment/>
-         
+           <userComment/>    
        </div>
        <div class="left">
            <!-- 今日汇总 -->
@@ -63,13 +62,14 @@ let stars = document.getElementById('stars')
     .right{
         float: right;
         width: 400px;
-        margin-left: 20px;
+        // margin-left: 20px;
         .subtitle{ color:#409eff;margin-bottom: 10px;}      
-    }    
+    }
+    .left{
+        margin-right: 420px;
+    }
 }
-.carditem{ margin-bottom: 10px;}
-.title{ padding-left: 6px;border-left:3px solid #75b8fc;}
-.header{font-weight: 700;}
+
 </style>
 
 <style>
@@ -83,4 +83,6 @@ let stars = document.getElementById('stars')
     padding: 6px 20px;
     font-size: 12px;
 }
+  .title{ padding-left: 6px;border-left:3px solid #75b8fc;}
+  .header{font-weight: 700;}
 </style>
