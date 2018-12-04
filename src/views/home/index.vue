@@ -19,8 +19,7 @@
             <lodgerKB/>
             <!-- 审核离店 -->
             <auditLeave/>
-       </div>
-       
+       </div>     
     </div>
 </template>
 

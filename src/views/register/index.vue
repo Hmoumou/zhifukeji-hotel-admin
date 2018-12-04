@@ -19,19 +19,19 @@
                         <div class="middle-left fll">
                             <div class="userId item clearfix">
                                 <img class="rentou imgitem" src="../../image/login/人 拷贝 2.png" alt="#">
-                                <el-input type="text"  class="input" name="userId" placeholder="请输入名称" :value='formData.usename'></el-input>
+                                <el-input type="text"  class="input" name="userId" placeholder="请输入名称" v-model='formData.userName'></el-input>
                             </div>
                             <div class="password item clearfix">
                                 <img class="suo imgitem" src="../../image/login/密码 拷贝 2.png" alt="#">
-                                <el-input type="password" class="input" name="password" placeholder="请输入密码"  :value='formData.password'></el-input>
+                                <el-input type="password" class="input" name="password" @blur="verify" placeholder="请输入密码"  v-model='formData.password'></el-input>
                             </div>
                             <div class="againpsw item clearfix">
                                 <img class="suo imgitem" src="../../image/login/密码 拷贝 2.png" alt="#">
-                                <el-input type="password" class="input" name="againpsw" placeholder="请再次输入密码"  :value='formData.againpsw'></el-input>
+                                <el-input type="password" class="input" name="againpsw" placeholder="请再次输入密码"  v-model='formData.againpsw'></el-input>
                             </div>
                             <div class="againpsw item clearfix">
                                 <img class="suo imgitem" src="../../image/login/行业.png" alt="#">
-                                <el-select v-model="formData.value" placeholder="选择所在行业">
+                                <el-select v-model="formData.industry" placeholder="选择所在行业">
                                     <el-option
                                     class="input"
                                     v-for="item in options"
@@ -43,11 +43,11 @@
                             </div>
                             <div class=" item clearfix">
                                 <img class="suo imgitem" src="../../image/login/编号.png" alt="#">
-                                <el-input type="text" class="input" name="serial" placeholder="请输入申请编码(选填)"  :value='formData.code'></el-input>
+                                <el-input type="text" class="input" name="serial" placeholder="请输入申请编码(选填)"  v-model='formData.applicationcode'></el-input>
                             </div>
                             <div class=" item clearfix">
                                 <img class="suo imgitem" src="../../image/login/手机(1).png" alt="#">
-                                <el-input type="text" class="input" name="Phone" placeholder="请输入手机号码"  :value='formData.phone'></el-input>
+                                <el-input type="text" @blur="phoneVerify" class="input" name="Phone" placeholder="请输入手机号码" v-model='formData.phone'></el-input>
                             </div>
                             <div class="code item clearfix">
                                 <span class="flr blue fs14 getRegister"  @click="handleGetCode">获取验证码</span>
@@ -74,37 +74,104 @@
         data(){
             return{
                 formData:{
-                    value:"",
-                    username:'',
-                    password:'',
                     againpsw:'',
-                    code:'',
-                    phone:''
+                    usercode:'',
+                    userName:'',
+                    phone:'',
+                    password:'',
+                    industry:'',
+                    applicationcode:'',
+                    refusercode: '',
+                },
+                yanZhen:{
+                    pwdIsOK: false,
+                    phoneIsOK: false,
                 },
                  options: [{
                     value: '选项1',
-                    label: '管理员1'
+                    label: '智付科技管理员1号'
                     }, {
                     value: '选项2',
-                    label: '管理员2'
+                    label: '智付科技管理员2号'
                     }, {
                     value: '选项3',
-                    label: '管理员3'
+                    label: '智付科技管理员3号'
                     }, {
                     value: '选项4',
-                    label: '管理员5'
+                    label: '智付科技管理员4号'
                     }],
             }
         },
         methods:{
+            verify(){
+                var pswVerify = /^[a-zA-Z0-9]{6,}$/
+                    if(pswVerify.test(this.formData.password)){
+                        this.yanZhen.pwdIsOK = true;
+                        console.log('密码验证通过');
+                         }else{
+                        this.$message.error('密码不能包含非法字符，长度至少为6位')
+                    }
+            },
+            phoneVerify(){
+                 var phoneVerify = /^1[3-9]\d{9}$/
+                    if(phoneVerify.test(this.formData.phone)){
+                        this.yanZhen.phoneIsOK = true;
+                        console.log('手机号通过');
+                    }else{
+                        this.$message.error('手机号格式不正确')
+                    }
+            },
             handleGetCode(){
-                // this.$axios.get()
+                if(this.yanZhen.phoneIsOK){
+                    this.$axios.post(`/user/findCheckCode`,this.formData.phone).then(res=>{
+                        if(!res.result){
+                            this.$message.error('手机号已注册 或者不可用')
+                        }else{
+                            console.log(res);
+                            // this.formData.refusercode = res.result.
+                        }
+                    })
+                }else{
+                    this.$message.error('请输入手机号')
+                }
             },
             handleLogin(){
                 this.$router.push('/')
             },
             handleRegister(){
-                // this.$axios.post('register')
+                if(!this.yanZhen.pwdIsOK){
+                    this.$message.error('密码格式不正确')
+                }else if(this.formData.againpsw != this.formData.password){
+                    this.$message.error('两次输入密码不一致')
+                }else if(!this.yanZhen.phoneIsOK){
+                    this.$message.error('手机号码格式不正确')
+                }else if(!usercode){
+                    this.$message.error('请输入验证码')
+                }else if(refusercode != usercode){
+                    this.$message.error('输入验证码不正确')
+                }else{
+                    console.log('开始发数据啦')
+                    this.$axios.post(`/user/insertUser`,this.formData).then(res=>{
+                    if(res.reason == 4){
+                        this.$message.error('验证码错误！')
+                    }else if( res.reason == 3){
+                        this.$message.error('手机号已注册！')
+                    }else if(res.reason == 2){
+                        this.$message.error('注册失败！')
+                    }else if(res.reason == 1){
+                        this.$message.error('注册成功！正在跳转...')
+                        setTimeout(() => {
+                            this.$router.push('/')
+                        }, 500);
+                    }else{
+                        console.log('未知错误')
+                    }
+                })
+                }
+                      
+  
+                   
+             
             }
         }
     }
@@ -121,7 +188,7 @@
 }
   
   .box { 
-    width: 35%;
+    width: 472px;
     height: 740px;  
     position: absolute;
     top: 50%;

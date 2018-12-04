@@ -13,7 +13,7 @@
       type="text"
       @click="showManageView"
     >
-     <img src="@/image/home/leftArrow.png" style="width: 40px; height: 40px"></img>
+     <img src="@/image/home/leftArrow.png" style="width: 40px; height: 40px" />
      <span class="backText">返回上一步</span>
       </el-button>
   </div>
@@ -58,6 +58,7 @@ export default {
   border-radius: 20px;
   font-weight: 650px;
   background: url("../../image/home/btn1.png") no-repeat;
+  background-size: 100% 100%;
   text-align: center;
 }
 .backBtn{

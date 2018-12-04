@@ -28,7 +28,7 @@
             style="width: 100px; height:100px; float: left; margin-right: 15px;"
           >
           <div class="homeInfo clearfix">
-            <strong>豪华大床房</strong>
+            <strong class="fs14">豪华大床房</strong>
             <div class="infoTitleDiv">
               <span class="infoTitle">面积</span>
               <span class="infoTitle">床宽</span>

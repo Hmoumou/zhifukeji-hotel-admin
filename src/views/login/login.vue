@@ -17,11 +17,11 @@
                 <div class="box-btm" :model="formData">
                     <div class="userId item clearfix">
                         <img class="rentou imgitem" src="../../image/login/人 拷贝 2.png" alt="#">
-                        <el-input type="text" class="input" name="userId" placeholder="请输入登录账号" :value='formData.username'></el-input>
+                        <el-input type="text" class="input" name="userId" placeholder="请输入登录账号" v-model='formData.account'></el-input>
                     </div>
                     <div class="password item clearfix">
                         <img class="suo imgitem" src="../../image/login/密码 拷贝.png" alt="#">
-                        <el-input type="password" class="input" name="password" placeholder="请输入密码" :value='formData.password'></el-input>
+                        <el-input type="password" class="input" name="password" placeholder="请输入密码" v-model='formData.password'></el-input>
                     </div>
                     <div class="isRemember">
                             <el-checkbox label="记住密码" name="type"></el-checkbox>
@@ -103,15 +103,15 @@ export default {
         toLogin:true,
         isRemember:false,
         formData:{
-            username:'',
+            account:'',
             password:'',
             againpsw:'',
             phone:'',
         },
-        rule:{
-            username:[{validator: validateUsername, trigger: 'blur'}],
-            password:[{validator: validatePassword, trigger: 'blur'}]
-        },
+        // rule:{
+        //     username:[{validator: validateUsername, trigger: 'blur'}],
+        //     password:[{validator: validatePassword, trigger: 'blur'}]
+        // },
         isLoading:false ,
        
     }
@@ -136,22 +136,21 @@ export default {
       },
       handleGo(){
           this.isLoading = true
-          this.$router.push('/layout/home')
-        //   this.$axios.post('/login',this.formData).then(res=>{
-        //       console.log(res);
-        //       if(res.code == 200){
-        //           this.$store.commit('CHANGE_USERINFO',res.data)
-        //           this.$message.success('登录成功')
-        //             setTimeout(()=> {
-        //                 this.$router.push('/layout/index')
-        //             }, 2000);
-        //       }else{
-        //           this.$message.error(res.msg)
-        //       }
-        //       this.isLoading = false
-        // }).catch(err => {
-        //       this.isLoading = false
-        // })
+        //   this.$router.push('/layout/home')
+          this.$axios.post('/user/login',this.formData).then(res => {
+              console.log(res)
+              if(res.reason == 1){
+                  this.$message.success('登陆成功，正在跳转。。。')
+                  setTimeout( () =>{
+                      this.$router.push(`/layout/home`)
+                  },500)
+              }else if(res.reason == 2){
+                this.$message.success('密码错误，请输入正确的密码')
+              }else{
+                this.$message.success('您输入的账号有误')
+              }
+          })
+        
       },
        valiLogin(){
         this.$refs["form"].validate((valid) => {

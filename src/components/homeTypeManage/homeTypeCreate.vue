@@ -140,4 +140,11 @@ export default {
 /deep/ .el-form-item__label{
     font-weight: 700
 }
+ 
+</style>
+<style>
+.el-input-inner{
+    padding-left: 10px;
+}
+
 </style>
