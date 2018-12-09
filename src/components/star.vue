@@ -14,7 +14,7 @@
         props:{
             score:{
                 type:Number
-            },
+            }
         },
         data(){
             return{
@@ -30,7 +30,7 @@
 
 <style scoped lang='scss'>
 .star{  
-        width: 430px;
+        display: inline-block;  
         font-size: 14px;
             height: 20px;
             margin: 5px 0;

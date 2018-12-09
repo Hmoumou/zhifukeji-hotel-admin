@@ -183,10 +183,12 @@ export default {
     border-radius: 0px;
 }
 .order {
+    box-sizing: border-box; 
+    // overflow-x: hidden;
     //顶部查询框样式
-  .orderScreen{
-     border: 0.1px solid #fff;
+  .orderScreen{  
      position: relative;
+     border: 0.1px solid #fff;
     .carditem {
         position: absolute;
         top: -20px;
@@ -212,14 +214,14 @@ export default {
                 border-radius: 0;
                 border-top-right-radius: 20px;
                 border-bottom-right-radius: 20px;
-                padding: 14px 24px;
+                padding: 10px 24px;
         }
     }
   }
 }
 //下面订单详情样式
 .orderDetails{
-     margin-top: 80px;
+     margin-top: 60px;
      .orderDetail-left{
          padding-right: 12px;
          width:35%;
@@ -267,7 +269,7 @@ export default {
 </style>
 <style>
 .el-main { text-align: left; line-height: 1;}
-.el-input__inner { padding: 0;background: #f9fbff;border: none;}
+.el-input__inner { padding: 0;background: #f9fbff;border: none;height: 36px;line-height: 36px;}
 .el-button{ border-radius: 20px;  padding: 6px 20px; font-size: 14px;}
 .el-button--text {font-size: 14px; margin-top: 9px;}
 </style>

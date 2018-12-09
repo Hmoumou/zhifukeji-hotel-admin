@@ -4,14 +4,17 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
-import {$axios} from './utils'
+import {$axios} from './utils/index.js'
+import VueCookies from 'vue-cookies'
+// import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css';
 // import iView from 'iview';
 // import 'iview/dist/styles/iview.css';
 
-
 Vue.prototype.$axios = $axios;
-Vue.use(ElementUI);
+
+Vue.use(ElementUI)
+Vue.use(VueCookies)
 // Vue.use(iView);
 Vue.config.productionTip = false
 

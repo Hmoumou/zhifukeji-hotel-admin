@@ -62,10 +62,10 @@ export default {
     font-weight: 500;
   }
   .imageDiv {
-    height: 250px;
+    height: 230px;
     display: flex;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     .imageItem {
       width: 30%;
       margin-left: 2.5%;

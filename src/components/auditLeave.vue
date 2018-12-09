@@ -38,39 +38,39 @@
 </script>
 
 <style scoped lang='scss'>
-     .orderitem{  
-                width: 184px;
-                border: 1px solid #f1f1f1;
-                padding: 10px;
-                margin-right: 8px;
-                display: inline-block;
-                 span,strong{
-                    display: block;
-                }
-            }
-         
-        //auditleave
-        .auditLeave{
-            .auditLeave-top{
-                margin-bottom: 10px;
-                 line-height: 1.5;
-            }
-            .auditLeave-btm{
-                span,strong{
-                    display: block;
-                }
-            }
-            .name{font-weight: 700;}
-            .time{
-                display: inline-block;
-                font-size: 12px;
-                color:#409eff;
-            } 
-            .summoney{
-                font-size: 12px;
-            }
+.orderitem{  
+    width: 184px;
+    border: 1px solid #f1f1f1;
+    padding: 10px;
+    margin-right: 8px;
+    display: inline-block;
+        span,strong{
+        display: block;
+    }
+}
+
+//auditleave
+.auditLeave{
+    .auditLeave-top{
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+    .auditLeave-btm{
+        span,strong{
+            display: block;
         }
-        .carditem{ margin-bottom: 10px;}
-        .title{ padding-left: 6px;border-left:3px solid #75b8fc;}
-        .header{font-weight: 700;}
+    }
+    .name{font-weight: 700;}
+    .time{
+        display: inline-block;
+        font-size: 12px;
+        color:#409eff;
+    } 
+    .summoney{
+        font-size: 12px;
+    }
+}
+.carditem { margin-bottom: 10px;}
+.title    { padding-left: 6px;border-left:3px solid #75b8fc;}
+.header   {font-weight: 700;}
 </style>

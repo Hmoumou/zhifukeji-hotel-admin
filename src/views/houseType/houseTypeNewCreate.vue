@@ -9,12 +9,12 @@
       @click="createComplete"
     >完成</div>
     <el-button
-      class="backBtn"
+      class="backBtn clearfix"
       type="text"
       @click="showManageView"
     >
-     <img src="@/image/home/leftArrow.png" style="width: 40px; height: 40px" />
-     <span class="backText">返回上一步</span>
+     <img src="@/image/home/leftArrow.png" class="fll" style="width: 40px; height: 40px" />
+     <span class="backText fll mt10">返回上一步</span>
       </el-button>
   </div>
 </template>
@@ -35,7 +35,9 @@ export default {
     return {};
   },
   methods: {
-    createComplete() {},
+    createComplete() {
+      // this.$axios.post('')
+    },
     showManageView() {
       this.$emit("showManageView");
     }
@@ -53,7 +55,7 @@ export default {
   margin: 20px 15px 20px 0;
   color: #fff;
   width: 200px;
-  height: 40px;
+  height: 54px;
   line-height: 40px;
   border-radius: 20px;
   font-weight: 650px;
@@ -62,6 +64,9 @@ export default {
   text-align: center;
 }
 .backBtn{
+  margin-left: 20px;
   margin-top: 20px;
+  
 }
+.mt10{ margin-top: 10px; }
 </style>

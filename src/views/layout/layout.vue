@@ -1,7 +1,7 @@
 <template>
     <div class="layout">
         <el-container>
-        <el-header id="header" height='90px' ><Header/></el-header>
+        <el-header id="header" height='70px' ><Header/></el-header>
         <el-container>
             <el-aside width="200px" class="bar"><Sidbar/></el-aside>
             <el-container>
@@ -26,7 +26,6 @@ import Sidbar from '@/components/Sidbar.vue'
 
 <style scoped lang='scss'>
 .layout{
-
 }
 .bar{
      overflow: hidden;

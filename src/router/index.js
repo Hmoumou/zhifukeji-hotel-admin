@@ -61,7 +61,7 @@ export default new Router({
           },    
         },
         {
-          path: 'order',
+          path: 'order/:id',
           name: 'order',
           component:()=>import('../views/order/index.vue'),
           meta:{

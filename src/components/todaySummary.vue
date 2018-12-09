@@ -49,8 +49,9 @@
                 padding:5px; 
                 line-height: 2;
                 border-radius: 4px;
-                margin-right: 5px;
+                margin-right: 16px;
                 background: url('../image/home/box.png')no-repeat;
+                box-sizing: border-box;
                 background-size: 100% 100%;
                 display: inline-block;
             }
@@ -64,4 +65,12 @@
  .carditem{ margin-bottom: 10px;}
 .title{ padding-left: 6px; border-left:3px solid #75b8fc;}
 .header{font-weight: 700;}
+</style>
+<style>
+.el-card__header{
+    padding: 12px 20px;
+}
+.el-main{
+    padding: 12px;
+}
 </style>

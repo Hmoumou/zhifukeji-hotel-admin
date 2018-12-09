@@ -29,7 +29,7 @@
             </div>
             <div class="line fll">
             </div>
-            <div class="title fll">
+            <div class="title1 fll">
                 <span class="span1">酒店管理系统</span>
                 <span class="span2">HOTEL MANAGEMENT</span>
             </div>
@@ -57,11 +57,11 @@ let items = Array.from(document.getElementsByClassName('item'))
 
 <style scoped lang='scss'>
 .Header{
-    padding: 10px 0;
+    // padding: 10px 0;
     border-bottom: 1px solid #f1f1f1;
     box-sizing: border-box;
     width: 100%;
-     height: 90px;
+    height:70px;
     .left{
         width: 300px;
         float: left;
@@ -81,7 +81,7 @@ let items = Array.from(document.getElementsByClassName('item'))
               height: 40px;
               color:#f1f1f1;
           }
-          .title {
+          .title1 {
               margin-top: 10px;
               box-sizing: border-box;
               line-height: 1.5;
@@ -90,13 +90,13 @@ let items = Array.from(document.getElementsByClassName('item'))
               width: 160px;
              
           }
-          .title .span1{
+          .title1 .span1{
             font-weight: 700;
             font-size: 22px;
             display: block;
             width: 160px;         
           }
-           .title .span2{
+           .title1 .span2{
                 display: block;
                 width: 160px; 
                 font-size: 10px;             
@@ -128,7 +128,7 @@ let items = Array.from(document.getElementsByClassName('item'))
                 box-sizing: border-box;
                 line-height: 1.2;
                 width: 40px;
-                height: 50px;
+                height: 40px;
                 margin-right: 24px;
                 padding:0px 12px;
 

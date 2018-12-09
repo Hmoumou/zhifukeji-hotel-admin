@@ -1,32 +1,20 @@
 <template>
   <div class="homeTypeList">
     <el-card class="box-card  carditem">
-      <div
-        slot="header"
-        class="header clearfix"
-      >
+      <div slot="header" class="header clearfix">
         <span class="title">房型管理</span>
         <el-button
           style="float: right; padding: 5px ; width: 150px"
           type="primary"
           round
-          @click="showCreateView"
-        >新建房型</el-button>
+          @click="showCreateView">新建房型</el-button>
       </div>
-      <div class="homeItemList">
-        <div
-          v-for="o in 6"
-          :key="o"
-          class="text homeItem"
-        >
-          <el-button
-            type="text"
-            class="editBtn"
-          >修改</el-button>
-          <img
-            src="@/image/0001.jpg"
-            style="width: 100px; height:100px; float: left; margin-right: 15px;"
-          >
+        <div class="homeItemList">
+        <div v-for="o in 6" :key="o" class="text homeItem">
+          <el-button type="text" class="editBtn" @click="handleChange">修改</el-button>
+          <img src="@/image/0001.jpg"
+            style="width: 100px; height:100px;
+             float: left; margin-right: 15px;">
           <div class="homeInfo clearfix">
             <strong class="fs14">豪华大床房</strong>
             <div class="infoTitleDiv">
@@ -65,6 +53,9 @@ export default {
   methods: {
     showCreateView() {
       this.$emit("showCreateView");
+    },
+    handleChange(){
+
     }
   },
   created(){

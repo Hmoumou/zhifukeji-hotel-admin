@@ -6,6 +6,7 @@
                 <div class="box-top clearfix">
                     <div class="left fll clearfix">
                         <h2>后台登录</h2>
+                        
                         <p class="fs14 fssmall small">SYSTEM BACKSTAGE LOGIN</p>                           
                     </div>
                     <div class="right  clearfix">
@@ -17,7 +18,7 @@
                 <div class="box-btm" :model="formData">
                     <div class="userId item clearfix">
                         <img class="rentou imgitem" src="../../image/login/人 拷贝 2.png" alt="#">
-                        <el-input type="text" class="input" name="userId" placeholder="请输入登录账号" v-model='formData.account'></el-input>
+                        <el-input type="text" class="input" name="userId" placeholder="请输入手机号" v-model='formData.account'></el-input>
                     </div>
                     <div class="password item clearfix">
                         <img class="suo imgitem" src="../../image/login/密码 拷贝.png" alt="#">
@@ -84,20 +85,6 @@
 export default {
   name: "login",
   data(){
-      const validateUsername = (rule, value, callback)=>{
-          if(!value){
-              callback(new Error('必须输入合法用户名'))
-          }else(
-              callback()
-          )
-      }
-    const validatePassword = (rule, value, callback)=>{
-        if(value && value.length >= 5){
-            callback()
-        }else{
-            callback(new Error('请输入合法的密码'))
-        }
-    }
     return{
         toForget:false,
         toLogin:true,
@@ -108,10 +95,6 @@ export default {
             againpsw:'',
             phone:'',
         },
-        // rule:{
-        //     username:[{validator: validateUsername, trigger: 'blur'}],
-        //     password:[{validator: validatePassword, trigger: 'blur'}]
-        // },
         isLoading:false ,
        
     }
@@ -136,31 +119,34 @@ export default {
       },
       handleGo(){
           this.isLoading = true
-        //   this.$router.push('/layout/home')
-          this.$axios.post('/user/login',this.formData).then(res => {
+          if(!this.formData.account||!this.formData.password){
+              this.$message.error('用户名或密码不能为空')
+          }else{
+              this.$axios.post('/zftds/erp/user/login',this.formData).then(res => {
               console.log(res)
               if(res.reason == 1){
-                  this.$message.success('登陆成功，正在跳转。。。')
+                  this.$message.success('登录成功，正在跳转...')
                   setTimeout( () =>{
                       this.$router.push(`/layout/home`)
                   },500)
               }else if(res.reason == 2){
-                this.$message.success('密码错误，请输入正确的密码')
+                this.$message.success('密码错误，请重新输入密码')
               }else{
-                this.$message.success('您输入的账号有误')
+                 this.$message.error('用户信息不存在')
               }
           })
+          }
         
       },
-       valiLogin(){
-        this.$refs["form"].validate((valid) => {
-                if (valid) {
-                    this.handleLogin()
-                } else {
-                    console.log(valid);
-                }
-            });
-        }
+    //    valiLogin(){
+    //     this.$refs["form"].validate((valid) => {
+    //             if (valid) {
+    //                 this.handleLogin()
+    //             } else {
+    //                 console.log(valid);
+    //             }
+    //         });
+    //     }
   },
  
 };

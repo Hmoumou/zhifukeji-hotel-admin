@@ -10,14 +10,14 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/api': {
-        target: '192.168.3.142:8080/zftds',
-        changeOrigin:true,
-        pathRewrite: {
-          '/api': '/'
-        }
-      }
+    proxyTable:{
+      // '/api':{
+      //   target:'http://192.168.3.142',
+      //   changeOrigin:true,
+      //   pathRewrite:{
+      //     '/api':'/'
+      //   }
+      // }
     },
 
     // Various Dev Server settings

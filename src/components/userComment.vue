@@ -16,14 +16,14 @@
                         <p class="fs14">{{commentData.adminAsk}}</p>
                     </div>
                     <div class="box-Reply"  ref="huifubox"  v-else-if="isShow"> 
-                        <p>{{commentData.replay}}</p>                        
-                        <textarea :value='commentData.replay' name="reply" class="reply" id="reply" cols="42" rows="5">
+                        <p>{{commentData.adminAsk}}</p>                        
+                        <textarea :value='commentData.adminAsk' name="adminAsk" class="reply" id="reply" cols="42" rows="5">
                         </textarea>
                         <el-button @click="handleYes" type='primary'>提交</el-button>
                         <el-button @click="handleNo(index)">取消</el-button>  
                     </div>
                     <el-button  v-else class="flr" type='primary' @click="handleReply(index)">
-                                回复
+                        回复
                     </el-button>                   
                 </div>                   
             </div>
@@ -45,12 +45,11 @@ let commentitems = document.getElementsByClassName('commentitem')
                 haveValue:true,
                 isShow:false,
                 commentData:{
-                    reply:'今天是个好日子',
                     username:"用户0729",
                     starnum:3,
                     commentTime:'2018-01-19',
                     comment:'店家超好非常满意的一次入住，感谢！',
-                    adminAsk:'今天是个好日子',
+                    adminAsk:'',
                     score:3.6   
                 }
             }

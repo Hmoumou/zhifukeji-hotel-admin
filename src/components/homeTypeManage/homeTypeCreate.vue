@@ -138,13 +138,23 @@ export default {
 }
 
 /deep/ .el-form-item__label{
-    font-weight: 700
+    font-weight: 550
 }
- 
+/deep/ input.el-input__inner{
+    background-color: #eff5ff;
+}
+/deep/ textarea.el-textarea__inner{
+    background-color: #eff5ff;
+}
 </style>
 <style>
-.el-input-inner{
+.el-form-item{
+    margin-bottom: 10px;
+  
+}
+.el-input-inner {
     padding-left: 10px;
+    
 }
 
 </style>
