@@ -41,7 +41,7 @@
                 <el-menu-item index="1-2" :class="{active:$route.name === 'order/2'}"><router-link   to='/layout/order/2' >订单查询</router-link></el-menu-item>
               </el-menu-item-group>
             </el-submenu>
-             
+
             <el-submenu index="6" id="item" :class="{active:$route.name === 'member'}">
               <template slot="title">
                 <router-link  to='/layout/member' >会员管理</router-link>
@@ -52,10 +52,16 @@
                 <router-link  to='/layout/evaluation' >评价管理</router-link>
               </template>
             </el-submenu>
-            <el-submenu index="8" id="item" :class="{active:$route.name === 'sellerCenter'}">
+            <el-submenu index="8" id="item" >
               <template slot="title">
                 <router-link  to='/layout/sellerCenter' >商户中心</router-link>
               </template>
+              <el-menu-item-group >
+                <el-menu-item index="/layout/sellerCenter"  :class="{active:$route.name === 'sellerCenter'}">基本信息</el-menu-item>
+                <el-menu-item index="/layout/phoneWay">联系方式</el-menu-item>
+                <el-menu-item index="/layout/policy">酒店政策</el-menu-item>
+                <el-menu-item index="/layout/photos">酒店相册</el-menu-item>
+              </el-menu-item-group>
             </el-submenu>
              <el-submenu index="9" id="item" :class="{active:$route.name === 'auditCenter'}">
               <template slot="title">
@@ -97,7 +103,7 @@
 
 <style scoped lang='scss'>
 .active{
-  background: rgb(237,243,255); 
+  background: rgb(237,243,255);
   border-left: 4px solid #409eff;
   font-size: 16px;
   a{
@@ -112,7 +118,7 @@
 /deep/ .el-icon-arrow-down{
   display: none;
 }
-/deep/ .el-submenu a{ 
+/deep/ .el-submenu a{
   display: block;
   width: 100%;
   height: 57px;
@@ -127,9 +133,12 @@
   display: none;
 }
 </style>
+<<<<<<< HEAD
 <style>
 .el-submenu-item{
     height: 52px;
     line-height: 52px;
 }
 </style>
+=======
+>>>>>>> de7c259949ddbeb509a43327e6cb9dc27eb31a92
