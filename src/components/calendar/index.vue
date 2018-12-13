@@ -1,9 +1,9 @@
 <template>
   <div class="box">
-    <div class="house-title fw">
+    <div class="house-title">
         七日化房间管理
-        <span class="house-title-date fs12 fw500">
-          08-01 至 08-02
+        <span class="house-title-date">
+          {{dateData.formatTime}}
         </span>
     </div>
     <table class="main-table" @click="handleClick">
@@ -11,25 +11,24 @@
       <tbody>
         <tr class="first-row">
           <td class="cell-spe" ref="speCell">
-            <div class="date-text fw">日期</div>
-            <div class="housetype-text fw">房型</div>
+            <div class="date-text">日期</div>
+            <div class="housetype-text">房型</div>
             <i class="line" ref="line"></i>
           </td>
-          <td v-for="(item,indexs) in 7" class="cell-item" :key="indexs">
-            <div class="cell-top fs14 fw">
-              16
+          <td v-for="(item, index) in dateData.weekDate" class="cell-item" :key="index">
+            <div class="cell-top">
+              {{item}}
             </div>
-            <div class="cell-bottom fs12" >
-              星期二
-              <!-- <span v-for="(item,indx) in weekDay" :key="indx">{{item}}</span> -->
+            <div class="cell-bottom">
+              {{week[index]}}
             </div>
           </td>
         </tr>
-        <tr class="row" v-for="(item,idx) in hoseType" :key='idx'>
-          <td class="row-title">
+        <tr class="row" v-for="(item,idx) in hoseType" :key="idx">
+          <td class="row-title" >
             {{item}}
           </td>
-          <td class="item-num" v-for="(item,index) in 7" :data-row="index" :key='index'>
+          <td class="item-num" v-for="(item,index) in 7" :data-row="idx" :data-col="index" :key="index">
             {{idx+index}}
           </td>
         </tr>
@@ -39,6 +38,7 @@
 </template>
 
 <script>
+  import moment from 'moment'
   import dyDialog from '../dy-dialog'
 
   export default {
@@ -55,9 +55,14 @@
           time: '2018-10-20',
           houseType: '豪华大床房'
         },
-        weekDay:["一","二","三","四","五","六","日"],
+        dateData: {
+          formatTime: '', // 格式化好的日期
+          month: '', // 当前月份
+          weekDate: [] // 一星期的数组
+        },
+        week: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日',],
         testData: {
-          time: 1544350369753,
+          time: 1544629397, // unix时间戳
           bigBed: [
             {
               num: 2,
@@ -131,15 +136,15 @@
             }
           ]
         },
-        hoseType: ['豪华大床房', '双标间', '海景大床房', '豪华家庭房', '天字一号房']
+        hoseType: ['豪华大床房', '双标间', '豪华海景大床房', '豪华家庭房', '天字一号房']
       }
     },
     methods: {
       handleClick(e) {
         let target = e.target.classList.contains('item-num')&&e.target;
         if(target) {
-          console.log(target)
-          console.log(target.dataset.row)
+          console.log(target.dataset.col + '列')
+          console.log(target.dataset.row + '行')
         }
       },
       handleClose() {
@@ -157,6 +162,35 @@
 
           line.style.width = hypotenuse + '100px'
           line.style.transform = `translate(-50%, -50%) rotateZ(${rotateDeg}deg)`;
+      },
+      getDate () {
+        let unix = this.testData.time //unix 时间戳
+        let minDate = new Date(unix*1000) // /用unix时间戳得到时间对象
+        let today = minDate.getDay() // 获取星期几
+        let todayNum = minDate.getDate() // 今天是多少号
+        let firstDay = -1; // 这一周开始的第一天
+        if(today == 0) { // 如果是星期天
+          let preDay = todayNum - 6;
+          minDate.setDate(preDay)
+          firstDay = minDate.getDate(); // 赋值第一天
+          this.dateData.weekDate = []
+          for(let i = 0; i<7; i++) {
+            this.dateData.weekDate.push(firstDay + i)
+          }
+
+        } else { // 如果不是星期天
+          let preDay = todayNum - today + 1; // 得到这周开始的号数
+          minDate.setDate(preDay) // 设置这周开始的号数
+          // console.log(minDate.getDate()); //得到了计算好的这周开始的号数
+          firstDay = minDate.getDate(); // 赋值第一天
+          console.log(firstDay);
+          this.dateData.weekDate = []
+          for(let i = 0; i<7; i++) {
+            this.dateData.weekDate.push(firstDay + i)
+          }
+        }
+
+
       }
     },
     mounted() {
@@ -167,6 +201,7 @@
           vm.setLine()
         }
       })
+      this.getDate()
     },
     beforeDestroy () {
       window.onresize = null
