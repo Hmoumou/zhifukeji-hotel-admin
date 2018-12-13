@@ -140,22 +140,22 @@
 <style scoped lang='scss'>
   .active{ border: 1px solid #9dccfa;}
   .title { padding-left: 6px;border-left: 3px solid #75b8fc;}
-  .header {font-weight: 700;}
+  .header {font-weight: 500; font-size: 16px;}
   .order-item {/deep/ .el-card__body {display: none; }}
 
 
   /**/
   .mesList{
-    padding: 0px 20px;
-    margin-top: 20px;
+    padding: 0px 20px; 
+    margin-bottom: 10px;
     .mesBox{
       height: 50px;
       line-height: 50px;
       display: block;
       width: 650px;
       .leftText{
-        font-weight: 700;
-        font-size: 18px;
+        font-weight: 500;
+        font-size: 14px;
         width: 230px;
         float: left;
       }
@@ -179,7 +179,6 @@
   }
 
   .el-card__header,.el-card{
-    border:none;
   }
   .el-select{
     width: 100%;

@@ -123,17 +123,18 @@ export default {
               this.$message.error('用户名或密码不能为空')
           }else{
               this.$axios.post('/zftds/erp/user/login',this.formData).then(res => {
-              console.log(res)
-              if(res.reason == 1){
+              console.log(res.data)
+              if(res.data.code == 200){
                   this.$message.success('登录成功，正在跳转...')
                   setTimeout( () =>{
                       this.$router.push(`/layout/home`)
                   },500)
-              }else if(res.reason == 2){
-                this.$message.success('密码错误，请重新输入密码')
-              }else{
-                 this.$message.error('用户信息不存在')
+              }else if(res.data.code == 500){
+                this.$message.error(res.data.message)
               }
+            //   }else{
+            //      this.$message.error('用户信息不存在')
+            //   }
           })
           }
         

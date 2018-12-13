@@ -35,9 +35,14 @@
 </template>
 
 <script>
+import upload from '@/components/imgupload/upload.vue'
 export default {
   name: "houseTypePhoto",
-  created() {}
+  components:{
+    upload,
+  },
+  created() {},
+
 };
 </script>
 

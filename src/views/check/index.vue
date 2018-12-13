@@ -1,6 +1,6 @@
 <template>
     <div class="check">
-        <div class="top"> 
+        <div class="top">
           <el-card class="box-card carditem clearfix">
             <div slot="header" class="header clearfix"><span class="title">入住房间及订单</span> </div>
                 <el-row :gutter="20">
@@ -15,44 +15,40 @@
                                             <el-option label="豪华海景大床房" value="2"></el-option>
                                             <el-option label="豪华家庭房" value="3"></el-option>
                                             <el-option label="天字一号房" value="4"></el-option>
-                                        </el-select> 
+                                        </el-select>
                                     </el-form-item>
                                     <el-form-item label="入住日期-离店日期" >
-                                        <el-col :span="10">
-                                            <el-form-item prop="date1" >
-                                                <el-date-picker type="date"   placeholder="请选择 年 - 月 - 日" v-model="formData.checkTime" style="width: 100%;"></el-date-picker>
-                                            </el-form-item>
-                                        </el-col>
-                                        <el-col class="line tac" :span="2">-</el-col>
-                                        <el-col :span="10">
-                                            <el-form-item prop="date1">
-                                                <el-date-picker type="date"  placeholder="请选择 年 - 月 - 日" v-model="formData.leaveTime" style="width: 100%;"></el-date-picker>
-                                            </el-form-item>
-                                        </el-col>
+                                        <el-date-picker
+                                            v-model="formData.checkTime"
+                                            type="daterange"
+                                            range-separator="至"
+                                            start-placeholder="开始日期"
+                                            end-placeholder="结束日期">
+                                        </el-date-picker>
                                     </el-form-item>
                                     <el-form-item label="房间编号" prop="houseId" >
                                         <el-input class="w300" v-model="formData.houseId"></el-input>
                                     </el-form-item>
-                                    <el-form-item label="支付方式" prop="payType" class="payType">  
-                                        <label :class="{ active: checkPay == 1}">         
-                                            <input :value="1" type="radio" v-model="checkPay" class="radio-input" name="pay"> 
+                                    <el-form-item label="支付方式" prop="payType" class="payType">
+                                        <label :class="{ active: checkPay == 1}">
+                                            <input :value="1" type="radio" v-model="checkPay" class="radio-input" name="pay">
                                             <div class="dui"></div>
                                         </label>
-                                        <label :class="{ active: checkPay == 2}">         
-                                            <input :value="2" type="radio" v-model="checkPay" class="radio-input" name="pay"> 
+                                        <label :class="{ active: checkPay == 2}">
+                                            <input :value="2" type="radio" v-model="checkPay" class="radio-input" name="pay">
                                             <div class="dui"></div>
                                         </label>
-                                        <label :class="{ active: checkPay == 3}">         
-                                            <input :value="3" type="radio" v-model="checkPay" class="radio-input" name="pay"> 
+                                        <label :class="{ active: checkPay == 3}">
+                                            <input :value="3" type="radio" v-model="checkPay" class="radio-input" name="pay">
                                             <div class="dui"></div>
                                         </label>
-                                        <label :class="{ active: checkPay == 4}">         
+                                        <label :class="{ active: checkPay == 4}">
                                             <input :value="4" type="radio" v-model="checkPay" class="radio-input" name="pay">
                                             <div class="dui"></div>
                                         </label>
-                                    </el-form-item> 
+                                    </el-form-item>
                                 </el-form>
-                            </div> 
+                            </div>
                         </div>
                     </el-col>
                     <el-col :span="8">
@@ -68,11 +64,11 @@
                                         :visible.sync="centerDialogVisible"
                                         width="30%"
                                         center>
-                                    <div class="content" v-if="isSuccess">  
+                                    <div class="content" v-if="isSuccess">
                                         <p class="fw">{{userData.username}}</p>
                                         <p>已成功入住{{userData.houseType}} <span class="blue">{{userData.houseId}}</span> 室</p>
                                     </div>
-                                    <div class="content" v-else>  
+                                    <div class="content" v-else>
                                         <p class="blue fs16 mb15 fw">入住失败</p>
                                         <p>{{userData.houseType}} <span class="blue">{{userData.houseId}}</span> 室,已被网上预订</p>
                                     </div>
@@ -80,38 +76,38 @@
                                             <div class="btn1"  @click="centerDialogVisible = false">确 定</div>
                                         </div>
                                     </el-dialog>
-                                </div>            
+                                </div>
                             </div>
                         </div>
                     </el-col>
                 </el-row>
-               
-              
+
+
             </el-card>
         </div>
         <div class="btm">
-            <el-row :gutter="20">
-                <el-col :span="12">
+            <el-row :gutter="20" >
+                <el-col :span="12" v-for="(item, index) in arr" style="margin-bottom: 15px" :key="index">
                     <div class="grid-content bg-purple">
                          <el-card class="btm-left box-card carditem clearfix">
-                            <div slot="header" class="header"><span class="title">入住人01</span> </div>
+                            <div slot="header" class="header"><span class="title">入住人0{{index + 1}}</span> </div>
                             <el-form :model='userData' label-width="100px" label-position='left'>
                                 <el-form-item label="姓名" prop="username"  >
-                                    <el-input   placeholder='请输入姓名'></el-input>
+                                    <el-input   placeholder='请输入姓名' v-model="item.username"></el-input>
                                 </el-form-item>
                                 <el-form-item label="身份证号" prop="IDcard" >
-                                    <el-input placeholder='请输入身份证号'></el-input>
+                                    <el-input placeholder='请输入身份证号' v-model="item.idCard"></el-input>
                                 </el-form-item>
                                 <el-form-item label="联系电话" prop="phone" >
-                                    <el-input placeholder='请输入联系电话'></el-input>
+                                    <el-input placeholder='请输入联系电话' v-model="item.phone"></el-input>
                                 </el-form-item>
                             </el-form>
                         </el-card>
                     </div>
                 </el-col>
-                <el-col :span="12">
+                <el-col :span="12" @click.native="handleAdduser">
                     <div class="grid-content bg-purple-light">
-                        <el-card class="btm-right box-card clearfix " @click="handleAdduser">
+                        <el-card class="btm-right box-card clearfix " >
                             <div class="icon">
                                 <i class="iconfont icon-jiahao1"></i>
                                 <span class="add">添加入住人</span>
@@ -120,9 +116,9 @@
                     </div>
                 </el-col>
             </el-row>
-             
-           
-           
+
+
+
         </div>
         <div class="box" v-if="Yes">
             <div class="box-inner">
@@ -171,6 +167,15 @@
                     phone:''
                 },
                 checkPay:2,
+                arr: [
+                  {
+                    username: '',
+                    houseId: '',
+                    houseType: '',
+                    idCard: '',
+                    phone: ''
+                  }
+                ]
             }
         },
         methods:{
@@ -187,7 +192,14 @@
                 console.log('现金支付');
             },
             handleAdduser(){
-                console.log('添加入住人');
+              console.log('胡然然');
+              this.arr.push({
+                  username: '',
+                  houseId: '',
+                  houseType: '',
+                  idCard: '',
+                  phone: ''
+                })
             },
             handleCheck(){
                this.centerDialogVisible=true
@@ -208,7 +220,7 @@
 
 .top{
     .payType{
-        label{  
+        label{
             box-sizing: border-box;
             display: inline-block;
             width: 92px;
@@ -296,12 +308,12 @@
                 color:#409eff;
                 font-weight: 900;
         }
-        
+
         }
     }
     .btnss{
         box-sizing: border-box;
-        cursor: pointer; 
+        cursor: pointer;
         margin: 0 auto;
         color:#fff;
         width:60%;
@@ -316,7 +328,7 @@
     .btn1{
         font-size: 14px;
         box-sizing: border-box;
-        cursor: pointer; 
+        cursor: pointer;
         margin: 0 auto;
         color:#fff;
         width:50%;
@@ -402,5 +414,3 @@
 }
 
 </style>
-
-

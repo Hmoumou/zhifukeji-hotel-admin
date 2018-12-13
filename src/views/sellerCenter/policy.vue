@@ -2,7 +2,7 @@
   <div>
     <el-card class="box-card carditem clearfix mesList">
       <div slot="header" class="header">
-        <span class="title" style="font-size: 20px;padding-left: 12px;">入离时间</span>
+        <span class="title" style="font-size: 16px;padding-left: 12px;">入离时间</span>
         <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" v-if="changeF" @click="toChangeF">修改</el-button>
         <el-button class="okbtn" type="text" v-else @click="okChangeF">完&nbsp;&nbsp;成</el-button>
       </div>
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div  v-else>
-        <div v-for="i in titleF"  class="mesBox" >
+        <div v-for="(i,index) in titleF"  :key='index' class="mesBox" >
           <div class="leftText">{{i.title}}</div>
           <div class="rightText">
             <el-time-picker
@@ -31,7 +31,7 @@
 
     <el-card class="box-card carditem clearfix mesList">
       <div slot="header" class="header">
-        <span class="title" style="font-size: 20px;padding-left: 12px;">儿童政策</span>
+        <span class="title" style="font-size: 16px;padding-left: 12px;">儿童政策</span>
         <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" v-if="changeS" @click="toChangeS">修改</el-button>
         <el-button class="okbtn" type="text" v-else @click="okChangeS">完&nbsp;&nbsp;成</el-button>
       </div>
@@ -50,7 +50,7 @@
 
     <el-card class="box-card carditem clearfix mesList">
       <div slot="header" class="header">
-        <span class="title" style="font-size: 20px;padding-left: 12px;">膳食安排</span>
+        <span class="title" style="font-size: 16px;padding-left: 12px;">膳食安排</span>
         <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" v-if="changeT" @click="toChangeT">修改</el-button>
         <el-button class="okbtn" type="text" v-else @click="okChangeT">完&nbsp;&nbsp;成</el-button>
       </div>
@@ -65,7 +65,7 @@
 
     <el-card class="box-card carditem clearfix mesList">
       <div slot="header" class="header">
-        <span class="title" style="font-size: 20px;padding-left: 12px;">宠物政策</span>
+        <span class="title" style="font-size: 16px;padding-left: 12px;">宠物政策</span>
         <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" v-if="changeFour" @click="toChangeFour">修改</el-button>
         <el-button class="okbtn" type="text" v-else @click="okChangeFour">完&nbsp;&nbsp;成</el-button>
       </div>
@@ -151,7 +151,7 @@
 <style scoped lang='scss'>
   .active{ border: 1px solid #9dccfa;}
   .title { padding-left: 6px;border-left: 3px solid #75b8fc;}
-  .header {font-weight: 700;}
+  .header {font-weight: 500; font-size: 16px}
 
 
   /**/
@@ -167,15 +167,15 @@
   }
   .mesList{
     padding: 10px 20px;
-    margin-top: 20px;
+    margin-bottom: 10px;
     position: relative;
     .mesBox{
       height: 50px;
       line-height: 50px;
       display: block;
       .leftText{
-        font-weight: 700;
-        font-size: 17px;
+        font-weight: 500;
+        font-size: 14px;
         width: 200px;
         float: left;
       }

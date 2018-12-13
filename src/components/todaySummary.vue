@@ -50,10 +50,24 @@
                 line-height: 2;
                 border-radius: 4px;
                 margin-right: 16px;
-                background: url('../image/home/box.png')no-repeat;
                 box-sizing: border-box;
-                background-size: 100% 100%;
                 display: inline-block;
+                 &:nth-of-type(1) {
+                      background: url('../image/home/box1.png')no-repeat;
+                      background-size: 100% 100%;
+                 }
+                 &:nth-of-type(2) {
+                      background: url('../image/home/box4.png')no-repeat;
+                       background-size: 100% 100%;
+                 }
+                 &:nth-of-type(3) {
+                      background: url('../image/home/box2.png')no-repeat;
+                       background-size: 100% 100%;
+                 }
+                 &:nth-of-type(4) {
+                      background: url('../image/home/box3.png')no-repeat;
+                      background-size: 100% 100%;
+                 }
             }
             .num{
                 font-size: 16px;

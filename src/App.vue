@@ -37,7 +37,7 @@ export default {
 .flr{float: right;}
 a{ color:#333;text-decoration: none;}
 .el-aside {
-  height: 100vh;
+  height: 100%;
   background-color: #ffffff;
   color: #333;
   text-align: center;
@@ -72,6 +72,12 @@ li{list-style: none;}
 .mb5{margin-bottom: 5px;}
 </style>
 <style>
+input.el-input__inner{background-color: #fff;}
+textarea.el-textarea__inner{ background-color: #fff;}
+.el-card__header{
+  padding: 12px 20px;
+  border-bottom: 1px solid #ebeef5;
+}
 .el-main{padding:10px;}
 .el-input__inner { padding: 0;background: #f9fbff;border: none;height: 36px;line-height: 36px;}
 </style>

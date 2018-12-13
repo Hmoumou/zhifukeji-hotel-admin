@@ -76,7 +76,7 @@
           <el-col :span="20">
             <div class="grid-content bg-purple-light">
                 <div class="item-right clearfix">
-                    <div class="item-stars clearfix"  v-for="(item,index) in star" :key="index">
+                    <div class="item-stars clearfix"  v-for="(item,index1) in star" :key="index1">
                         <div class="star-top clearfix mb10">
                             <span class="fll fs14 fw title-star">{{item.title}}</span>
                             <Star class="fll" :score="item.stars"/>
@@ -111,8 +111,7 @@
                         <textarea :value='userData.adminAsk' name="adminAsk" class="reply" id="reply" cols="42" rows="5">
                         </textarea>
                         <el-button @click="handleNo(index)" class="flr">取消</el-button>  
-                        <el-button @click="handleYes" type='primary flr mr10'>回复</el-button>
-                        
+                        <el-button @click="handleYes" type='primary flr mr10'>回复</el-button> 
                     </div>
                     <div class="box-Reply clearfix"  ref="huifubox"  v-else-if="isEdit">                    
                         <textarea :value='userData.adminAsk' name="adminAsk" class="reply" id="reply" cols="42" rows="5">
@@ -190,7 +189,7 @@ export default {
       console.log("点击按时间查询");
     },
     handleEdit(index){
-      console.log(index);
+      console.log('编辑index',index);
       // this.isShow = true
       this.isEdit = true
       this.EditData = this.userData.adminAsk
@@ -202,6 +201,7 @@ export default {
               })
     },
     handleDelete(index){
+      console.log('删除index',index);
       this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -216,10 +216,12 @@ export default {
 
     },
     handleNo1(index){
+      console.log('取消index',index);
       this.isEdit = false
       this.userData.adminAsk = this.EditData
     },
     handleReply(index){
+              console.log('回复index',index);
               console.log(index)
               this.isShow = true
               this.$nextTick(() => {
@@ -247,8 +249,9 @@ export default {
 }
 
 .top1 {
+  border: 0.1px solid #fff;
   position: absolute;
-  top: -20px;
+  top: -12px;
   left: -20px;
   right: -20px;
   .right {
@@ -424,5 +427,9 @@ export default {
 .el-main {
   text-align: left;
   line-height: 1;
+}
+.el-card__header{
+  padding: 12px 20px;
+  border-bottom: 1px solid #ebeef5;
 }
 </style>

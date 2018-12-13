@@ -5,20 +5,31 @@
                         <span class="title">待处理订单</span>
                         <el-button style="float: right; padding: 3px 0" type="text">查看全部<i class="iconfont icon-arw-top-copy"></i></el-button>
                     </div>
-                    <div v-for="o in 2" :key="o" class="text orderitem clearfix">
-                         <div class="orderRight flr clearfix">
-                            <span class="fs14">共<span class="time">{{1}}</span>晚</span>
-                            <span class= "money fw fs16">RMB {{888}}</span>
-                            <div class="btn flr">接受</div>
-                        </div>      
-                        <div class="orderLeft fll">
-                            <span class="fs14 mb5"><span class="time">{{2018}}-{{6}}-{{21}}</span> 至 <span class="time">{{2018}}-{{6}}-{{21}}</span></span>
-                            <div class="fs14 fw">豪华大床房</div>
-                            <span class="fs14">梁朝伟</span>
-                            <span class="time">查看详情</span>
-                        </div>
-                       
-                    </div>
+                    <el-row :gutter="20">
+                        <el-col :span="24">
+                            <div class="grid-content bg-purple">
+                                 <div v-for="o in 2" :key="o" class="text orderitem clearfix">
+                                    <div class="orderRight flr clearfix">
+                                        <span class="fs14">共<span class="time">{{1}}</span>晚</span>
+                                        <span class= "money fw fs16">RMB {{888}}</span>
+                                        <div class="btn flr">接受</div>
+                                    </div>      
+                                    <div class="orderLeft fll">
+                                        <span class="fs14 mb5"><span class="time">{{2018}}-{{6}}-{{21}}</span> 至 <span class="time">{{2018}}-{{6}}-{{21}}</span></span>
+                                        <div class="fs14 fw">豪华大床房</div>
+                                        <span class="fs14">梁朝伟</span>
+                                        <span class="time">查看详情</span>
+                                    </div>
+            
+                                </div>
+                            </div>
+                        </el-col>
+                        <!-- <el-col :span="12">
+                            <div class="grid-content bg-purple">
+                            </div>
+                        </el-col> -->
+                    </el-row>
+                   
                 </el-card>
     </div>
 </template>
@@ -32,7 +43,8 @@
 <style scoped lang='scss'>
    //order
         .orderitem{
-                // width: 45%;
+            width: 48%;
+            box-sizing: border-box;
                 border: 1px solid #f1f1f1;
                 padding: 10px;
                 margin-right: 8px;

@@ -19,13 +19,13 @@ const instance = axios.create({
 const xhr = {
     get(url,data,config){
         return new Promise((resolve,reject)=>{
-            instance.get(url,{params: data},config).then(ress=>{
+            instance.get(url,{params: data},config).then(res=>{
                 // if(res.data.code == 401){
                 //     console.log("登录失效get")
                 //     Message.warning('登录状态失效，正在跳转。。。');
                 //     router.push('/')
                 //  }
-                let res = JSON.parse(ress.data); 
+                // let res = JSON.parse(ress.data); 
                 resolve(res.data) 
             }).catch(err=>{
                 reject(err)
@@ -47,8 +47,8 @@ const xhr = {
     },
     post(url,data,config){
         return new Promise((resolve,reject)=>{
-            instance.post(url,data,config).then(ress=>{
-                let res = JSON.parse(ress.data); 
+            instance.post(url,data,config).then(res=>{
+                // let res = JSON.parse(ress.data); 
                 resolve(res)
             }).catch(err=>{
                 reject(err)

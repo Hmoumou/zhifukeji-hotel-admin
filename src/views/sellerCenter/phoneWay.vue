@@ -2,7 +2,7 @@
   <div>
     <el-card class="box-card carditem clearfix mesList">
       <div slot="header" class="header">
-        <span class="title" style="font-size: 20px;padding-left: 12px;">销售部</span>
+        <span class="title" style="font-size: 16px;padding-left: 12px;">销售部</span>
         <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" v-if="changeF" @click="wayToChangeF">修改</el-button>
         <el-button class="okbtn" type="text" v-else @click="wayokChangeF">完&nbsp;&nbsp;成</el-button>
       </div>
@@ -16,7 +16,7 @@
     </el-card>
     <el-card class="box-card carditem clearfix mesList">
       <div slot="header" class="header">
-        <span class="title" style="font-size: 20px;padding-left: 12px;">预定部</span>
+        <span class="title" style="font-size: 16px;padding-left: 12px;">预定部</span>
         <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" v-if="changeS" @click="wayToChangeS">修改</el-button>
         <el-button class="okbtn" type="text" v-else @click="wayokChangeS">完&nbsp;&nbsp;成</el-button>
       </div>
@@ -31,7 +31,7 @@
     </el-card>
     <el-card class="box-card carditem clearfix mesList">
       <div slot="header" class="header">
-        <span class="title" style="font-size: 20px;padding-left: 12px;">财务结算</span>
+        <span class="title" style="font-size: 16px;padding-left: 12px;">财务结算</span>
         <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" v-if="changeT" @click="wayToChangeT">修改</el-button>
         <el-button class="okbtn" type="text" v-else @click="wayokChangeT">完&nbsp;&nbsp;成</el-button>
       </div>
@@ -101,7 +101,7 @@
 <style scoped lang='scss'>
   .active{ border: 1px solid #9dccfa;}
   .title { padding-left: 6px;border-left: 3px solid #75b8fc;}
-  .header {font-weight: 700;}
+  .header {font-weight: 500; font-size: 16px}
 
 
   /**/
@@ -113,19 +113,19 @@
     background: url('../../image/商户中心+箭头/bgbtn.png');
     font-size: 20px;
     color: #fff;
-    font-weight: 700;
+    font-weight: 500;
   }
   .mesList{
     padding: 10px 20px;
-    margin-top: 20px;
+    margin-bottom: 10px;
     position: relative;
     .mesBox{
       height: 50px;
       line-height: 50px;
       display: block;
       .leftText{
-        font-weight: 700;
-        font-size: 17px;
+        font-weight: 500;
+        font-size: 14px;
         width: 200px;
         float: left;
       }
@@ -151,7 +151,6 @@
 
   }
   .el-card__header,.el-card{
-    border:none;
   }
   .el-input__inner {
     padding: 18px;

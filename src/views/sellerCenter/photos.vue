@@ -2,7 +2,7 @@
   <div>
     <el-card class="box-card carditem clearfix mesList">
       <div slot="header" class="header">
-        <span class="title" style="font-size: 20px;padding-left: 12px;">酒店外观</span>
+        <span class="title" style="font-size: 16px;padding-left: 12px;">酒店外观</span>
         <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" @click="photoToAddF">添加照片</el-button>
       </div>
       <div v-for="(o,index) in photoDetailF" :key="index" class="photoBox">
@@ -14,7 +14,7 @@
     </el-card>
     <el-card class="box-card carditem clearfix mesList">
       <div slot="header" class="header">
-        <span class="title" style="font-size: 20px;padding-left: 12px;">酒店内景</span>
+        <span class="title" style="font-size: 16px;padding-left: 12px;">酒店内景</span>
         <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" @click="photoToAddS">添加照片</el-button>
       </div>
       <div v-for="(o,index) in photoDetailS" :key="index" class="photoBox">
@@ -26,7 +26,7 @@
     </el-card>
     <el-card class="box-card carditem clearfix mesList">
     <div slot="header" class="header">
-      <span class="title" style="font-size: 20px;padding-left: 12px;">其他</span>
+      <span class="title" style="font-size: 16px;padding-left: 12px;">其他</span>
       <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" @click="photoToAddT">添加照片</el-button>
     </div>
     <div v-for="(o,index) in photoDetailT" :key="index" class="photoBox">
@@ -37,35 +37,29 @@
     </div>
   </el-card>
 
-
-
-
     <div class="addBox" v-if="showAdd">
       <div class="addbg">
         <div class="topbg"></div>
         <div class="downbg">
           <div class="addBtn">
-              <div class="iconRadio">
-
-              </div>
+              <div class="iconRadio"></div>
           </div>
           <div class="addText">
             <span>标题</span>
-            <el-input v-model="addObj.title" placeholder="请输入内容"></el-input>
+            <el-input v-model="addObj.title" style="width:70%"   placeholder="请输入内容"></el-input>
           </div>
           <div class="adddown">
             <div class="fh" @click="hideAdd">
               <!---->
-              <div class="iconBtn"></div>
               <div class="iconText">返回</div>
+              <div class="iconBtn"></div>
             </div>
             <div class="okbtn">
               <el-button @click="addPic" round>确&nbsp;定</el-button>
             </div>
           </div>
         </div>
-      </div>
-
+      </div>  
     </div>
   </div>
 </template>
@@ -140,11 +134,11 @@
 <style scoped lang='scss'>
   .active{ border: 1px solid #9dccfa;}
   .title { padding-left: 6px;border-left: 3px solid #75b8fc;}
-  .header {font-weight: 700;}
+  .header {font-weight: 500; font-size: 16px}
   /**/
   .mesList{
     padding: 10px 20px;
-    margin-top: 20px;
+    margin-bottom: 10px;
     position: relative;
     .photoBox{
       display: inline-block;
@@ -177,7 +171,7 @@
     justify-content: space-around;
     align-items: center;
     .addbg{
-      height: 70%;
+      height: 50%;
       width: 31.25%;
       .topbg{
         height: 9%;
@@ -188,7 +182,6 @@
         transform: rotateZ(-2deg) translateY(50%);
       }
       .downbg{
-        height: 95%;
         width: 100%;
         border-radius: 12px;
         background-color: #fff;
@@ -201,22 +194,23 @@
         /*下面是虚线盒子，做上传时替换成相应图片上传需要的组件or插件*/
         .addBtn{
           width: 100%;
-          height: 50%;
+          height: 25vh;
           display: flex;
           justify-content: space-around;
           align-items: center;
           border: 1px dashed  #518dfd;
           .iconRadio{
-            width: 80px;
-            height: 80px;
-            background: url("../../image/商户中心+箭头/add.png");
+            width: 60px;
+            height: 60px;
+            background: url("../../image/商户中心+箭头/add.png")no-repeat;
+            background-size: 100% 100%;
             cursor: pointer;
             user-select: none;
           }
         }
         .addText{
           height: 20%;
-          margin-top: 50px;
+          margin-top: 20px;
           font-weight: 700;
           font-size: 19px;
           color: #000;
@@ -227,7 +221,7 @@
         }
         .adddown{
           /*margin-top: 50px;*/
-          margin: 50px -30px 0;
+          margin: 20px 0 0;
           height: 50px;
           line-height: 50px;
           .fh{
@@ -237,8 +231,9 @@
             cursor: pointer;
             .iconBtn{
               float: left;
-              background: url("../../image/商户中心+箭头/返回.png");
-              height: 50px;
+              background: url("../../image/商户中心+箭头/返回.png") no-repeat;
+              background-size: 100% 100%;
+              height: 60px;
               width: 60px;
             }
             .iconText{
@@ -280,7 +275,6 @@
 
   }
   .el-card__header,.el-card{
-    border:none;
   }
   .el-input__inner {
     padding: 18px;

@@ -8,7 +8,7 @@
                         <!-- 今日汇总 -->
                         <todaySummary/>
                         <!-- 待处理订单 -->
-                            <pendingOrder/>
+                        <pendingOrder/>
                         <!-- 住客看板 -->                
                         <lodgerKB/>
                         <!-- 审核离店 -->
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import calendar from '@/components/calendar.vue'
+import calendar from '@/components/calendar/index.vue'
 import todaySummary from '@/components/todaySummary.vue'
 import pendingOrder from '@/components/pendingOrder.vue'
 import lodgerKB from '@/components/lodgerKB.vue'

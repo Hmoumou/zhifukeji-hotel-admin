@@ -60,12 +60,31 @@ export default new Router({
             title:'房态管理'
           },
         },
+        //订单管理 --未处理订单
         {
-          path: 'order/:id',
+          path: 'order',
           name: 'order',
           component:()=>import('../views/order/index.vue'),
           meta:{
             title:'订单管理'
+          },
+        },
+        //订单管理 --订单查询
+        {
+          path: 'orderSelect',
+          name: 'orderSelect',
+          component:()=>import('../views/order/orderSelect.vue'),
+          meta:{
+            title:'订单查询'
+          },
+        },
+         //测试页 ---结束的时候请删掉
+         {
+          path: 'test',
+          name: 'test',
+          component:()=>import('../views/test/index.vue'),
+          meta:{
+            title:'测试页'
           },
         },
         {

@@ -34,11 +34,12 @@
             </el-submenu>
              <el-submenu index="5" id="item">
               <template slot="title" >
-                <router-link  to='/layout/order/:id' >订单管理</router-link>
+                <router-link  to='/layout/order' >订单管理</router-link>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="1-1" :class="{active:$route.name === 'order/1'}"><router-link   to='/layout/order/1' >未处理订单</router-link></el-menu-item>
-                <el-menu-item index="1-2" :class="{active:$route.name === 'order/2'}"><router-link   to='/layout/order/2' >订单查询</router-link></el-menu-item>
+                <el-menu-item index="/layout/order" :class="{active:$route.name === 'order'}"><router-link   to='/layout/order/2' >订单查询</router-link></el-menu-item>
+                <el-menu-item index="/layout/orderSelect" :class="{active:$route.name === 'orderSelect'}" ><router-link   to='/layout/order/1' >未处理订单</router-link></el-menu-item>
+                
               </el-menu-item-group>
             </el-submenu>
 
@@ -57,10 +58,10 @@
                 <router-link  to='/layout/sellerCenter' >商户中心</router-link>
               </template>
               <el-menu-item-group >
-                <el-menu-item index="/layout/sellerCenter"  :class="{active:$route.name === 'sellerCenter'}">基本信息</el-menu-item>
-                <el-menu-item index="/layout/phoneWay">联系方式</el-menu-item>
-                <el-menu-item index="/layout/policy">酒店政策</el-menu-item>
-                <el-menu-item index="/layout/photos">酒店相册</el-menu-item>
+                <el-menu-item index="/layout/sellerCenter" :class="{active:$route.name === 'sellerCenter'}" >基本信息</el-menu-item>
+                <el-menu-item index="/layout/phoneWay" :class="{active:$route.name === 'phoneWay'}">联系方式</el-menu-item>
+                <el-menu-item index="/layout/policy" :class="{active:$route.name === 'policy'}">酒店政策</el-menu-item>
+                <el-menu-item index="/layout/photos" :class="{active:$route.name === 'photos'}">酒店相册</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
              <el-submenu index="9" id="item" :class="{active:$route.name === 'auditCenter'}">
@@ -71,6 +72,11 @@
             <el-submenu index="10" id="item" :class="{active:$route.name === 'tradingRecord'}">
               <template slot="title">
                 <router-link  to='/layout/tradingRecord' >交易记录</router-link>
+              </template>
+            </el-submenu>
+            <el-submenu index="11" id="item" :class="{active:$route.name === 'test'}">
+              <template slot="title">
+                <router-link  to='/layout/test' >测试页</router-link>
               </template>
             </el-submenu>
           </el-menu>
@@ -112,7 +118,7 @@
   }
 }
 .sidbar{
-  height: 100vh;
+  // height: 100vh;
   background: #fff;
 }
 /deep/ .el-icon-arrow-down{
@@ -133,12 +139,15 @@
   display: none;
 }
 </style>
-<<<<<<< HEAD
 <style>
+.el-submenu .el-menu-item{
+  font-size: 12px;
+}
 .el-submenu-item{
     height: 52px;
     line-height: 52px;
 }
+.el-aside{
+  height: 100%;
+}
 </style>
-=======
->>>>>>> de7c259949ddbeb509a43327e6cb9dc27eb31a92
