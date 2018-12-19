@@ -9,18 +9,28 @@
                     <div class="iconfont icon1"></div>
                     <span>首页</span>
                 </div>
-                <div class="inform fll item">
-                    <div class="iconfont icon2">
-                        <div class="message">
-                          <div class="num">{{num}}</div>
-                        </div>
+                <el-dropdown @command="handleCommand">
+                    <div class="logout fll item">
+                        <div class="iconfont icon3"></div>
+                        <span>退出</span>
                     </div>
-                    <span>通知</span>
-                </div>
-                <div class="logout fll item">
-                    <div class="iconfont icon3"></div>
-                    <span>退出</span>
-                </div>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item command='logout'>退出登录111</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+                <el-dropdown>
+                    <div class="inform fll item">
+                        <div class="iconfont icon2">
+                            <div class="message">
+                            <div class="num">{{num}}</div>
+                            </div>
+                        </div>
+                        <span>通知</span>
+                    </div>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>未读消息</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>  
             </div>
         </div>
         <div class="left clearfix">
@@ -50,6 +60,11 @@ let items = Array.from(document.getElementsByClassName('item'))
         methods:{
           gohome(){
               this.$router.push('/layout/home')
+          },
+          handleCommand(logout){
+              console.log('1111111');
+              window.open('https://baidu.com')
+              console.log('22222');
           }
         }
     }

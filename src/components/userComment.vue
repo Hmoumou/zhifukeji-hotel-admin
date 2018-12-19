@@ -5,11 +5,11 @@
                 <span class="title ">点评/回答</span>
             </div>
             <p class="subtitle fw fs14">最新点评</p>
-            <div  v-for="(l,index) in 2" class="text commentitem" :key='index' :model="commentData">
+            <div  v-for="(l,index) in 3" class="text commentitem" :key='index' :model="commentData">
                 <div class="comment-title clearfix">
                     <span class="flr fs12">{{commentData.commentTime}}</span>
                     <h4>{{commentData.username}}</h4> 
-                   <Star :score='commentData.score' />
+                    <Star :score='commentData.score' />
                     <p class="comment">{{commentData.comment}}</p>
                     <div class="adminAsk" v-if="commentData.adminAsk">
                         <span class="blue fw fs14">回复</span>
@@ -17,7 +17,7 @@
                     </div>
                     <div class="box-Reply"  ref="huifubox"  v-else-if="isShow"> 
                         <p>{{commentData.adminAsk}}</p>                        
-                        <textarea :value='commentData.adminAsk' name="adminAsk" class="reply" id="reply" cols="42" rows="5">
+                        <textarea  :value='commentData.adminAsk' name="adminAsk" class="reply mb5" id="reply" cols="42" rows="5">
                         </textarea>
                         <el-button @click="handleYes" type='primary'>提交</el-button>
                         <el-button @click="handleNo(index)">取消</el-button>  
@@ -113,6 +113,11 @@ let commentitems = document.getElementsByClassName('commentitem')
             }
         }
         .box-Reply{
+            .reply{
+                padding: 10px;
+                height: 60px;
+                box-sizing: border-box;
+            }
             display: none;
         }
 .carditem{ margin-bottom: 10px;}

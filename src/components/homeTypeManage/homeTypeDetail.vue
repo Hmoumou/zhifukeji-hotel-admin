@@ -18,8 +18,10 @@
         <img class="leftArrow" src="@/image/商户中心+箭头/leftArrow.png" @click="handleNext">
       </div>
       <div class="asideLeft">
-        <button class="btn">房型相册</button>
-        <button class="btn">图文详情</button>
+        <!-- <button class="btn">房型相册</button>
+        <button class="btn">图文详情</button> -->
+        <div :class="isGetPhoto?'active':'btn'" @click="handleGetPhoto">房型相册</div>
+        <div :class="isGetDetail?'active':'btn'" @click="handleGetDetail">图文详情</div>
       </div>
 
       <div class="textDetail clearfix">
@@ -82,6 +84,8 @@ export default {
   name: "houseTypeDetail",
   data(){
     return{
+      isGetPhoto:true,
+      isGetDetail:false,
       photoArr:{
         img:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2213670986,2923778817&fm=27&gp=0.jpg'
       }
@@ -90,6 +94,14 @@ export default {
   methods:{
     handleLast(){
       
+    },
+    handleGetPhoto(){
+      this.isGetPhoto = true
+      this.isGetDetail  = false
+    },
+    handleGetDetail(){
+      this.isGetPhoto = false
+      this.isGetDetail  = true
     },
     handleNext(){
 
@@ -111,9 +123,29 @@ export default {
 }
 .asideLeft {
   width: 15%;
-  .btn {
+  .active{
+    border: 1px solid #f1f1f1;
+    // background: #f1f1f1;
+    background: url('../../image/房型/矩形.png')no-repeat;
+    background-size: 100% 100%;
+    line-height: 60px;
+    color: #fff;
     width: 100%;
     height: 60px;
+    text-align: center;
+  }
+  .btn{
+    border: 1px solid #e1ecff;
+    background: #f9fbfe;
+    line-height: 60px;
+    color: #518dfd;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+  }
+  .btn:active{
+    background: url('../../image/房型/矩形.png')no-repeat;
+    background-size: 100% 100%;
   }
 }
 .photoBrowse {

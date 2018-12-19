@@ -10,27 +10,38 @@
           @click="showCreateView">新建房型</el-button>
       </div>
         <div class="homeItemList">
-        <div v-for="o in 6" :key="o" class="text homeItem">
-          <el-button type="text" class="editBtn" @click="handleChange">修改</el-button>
-          <img src="@/image/0001.jpg"
-            style="width: 100px; height:100px;
-             float: left; margin-right: 15px;">
-          <div class="homeInfo clearfix">
-            <strong class="fs14">豪华大床房</strong>
-            <div class="infoTitleDiv">
-              <span class="infoTitle">面积</span>
-              <span class="infoTitle">床宽</span>
-              <span class="infoTitle">卫浴</span>
-              <span class="infoTitle">最多入住</span>
-            </div>
-            <div class="infoDataDiv">
-              <span class="infoData">33平方米</span>
-              <span class="infoData">大床1.8m</span>
-              <span class="infoData">独立卫浴</span>
-              <span class="infoData">2人</span>
-            </div>
-          </div>
-        </div>
+          <el-row :gutter="20">
+            <el-col :span="24">
+              <div class="grid-content bg-purple">
+
+                <!-- start -->
+                <div v-for="o in 6" :key="o" class="text homeItem">
+                  <el-button type="text" class="editBtn" @click="handleChange">修改</el-button>
+                  <img src="@/image/0001.jpg"
+                    style="width: 100px; height:100px;
+                    float: left; margin-right: 15px;">
+                  <div class="homeInfo clearfix">
+                    <strong class="fs14">豪华大床房</strong>
+                    <div class="infoTitleDiv">
+                      <span class="infoTitle">面积</span>
+                      <span class="infoTitle">床宽</span>
+                      <span class="infoTitle">卫浴</span>
+                      <span class="infoTitle">最多入住</span>
+                    </div>
+                    <div class="infoDataDiv">
+                      <span class="infoData">33平方米</span>
+                      <span class="infoData">大床1.8m</span>
+                      <span class="infoData">独立卫浴</span>
+                      <span class="infoData">2人</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- end -->
+                  
+              </div>
+            </el-col>
+          </el-row>
+        
       </div>
       <div class="pageBtn">
         <el-button
@@ -80,6 +91,10 @@ export default {
   strong {
     display: block;
   }
+}
+.homeItem:active{
+  background: #f2f7ff;
+  border: 1px solid #409eff;
 }
 .editBtn {
   float: right;

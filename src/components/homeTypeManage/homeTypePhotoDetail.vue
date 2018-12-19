@@ -10,22 +10,7 @@
       </div>
       <span class="secondTitle">*图片尺寸：1920*900</span>
       <div class="imageDiv clearfix">
-        <div
-          v-for="i in 2"
-          :key="i"
-          class="imageItem"
-        >
-          <img
-            src="@/image/0001.jpg"
-            class="image"
-          >
-        </div>
-        <div class="imageItem addImage">
-          <div>
-            <i class="iconfont icon-jiahao1"></i>
-            <span class="add">添加图片</span>
-          </div>
-        </div>
+        <upload :imgList='arr' v-model="uploadimg"></upload>
       </div>
       
 
@@ -35,8 +20,18 @@
 </template>
 
 <script>
+import upload from '@/components/imgupload/dy-upload.vue'
 export default {
   name: "houseTypePhotoDetail",
+  data(){
+    return{
+      arr:['http://img2.imgtn.bdimg.com/it/u=500808421,1575925585&fm=200&gp=0.jpg','http://img2.imgtn.bdimg.com/it/u=500808421,1575925585&fm=200&gp=0.jpg'],
+      uploadimg:[]
+    }
+  },
+  components:{
+    upload,
+  },
   created() {}
 };
 </script>
@@ -61,39 +56,12 @@ export default {
     color: #409eff;
     font-weight: 500;
   }
-  .imageDiv {
+    .imageDiv {
+    box-sizing: border-box;
+    width: 100%;
     height: 230px;
-    display: flex;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    .imageItem {
-      width: 30%;
-      margin-left: 2.5%;
-      .image {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    .addImage {
-      border: 1px dashed #409eff;
-      box-sizing: border-box;
-      position: relative;
-      display: flex;
-      justify-content: center; //让子标签水平居中
-      align-items: center; //让子标签垂直居中
-      .icon-jiahao1 {
-        font-size: 50px;
-        color: #409eff;
-        display: flex;
-        justify-content: center;
-      }
-      .add {
-        margin-top: 10px;
-        display: block;
-        color: #409eff;
-        text-align: center;
-      }
-    }
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 </style>

@@ -72,7 +72,7 @@ li{list-style: none;}
 .mb5{margin-bottom: 5px;}
 </style>
 <style>
-input.el-input__inner{background-color: #fff;}
+input.el-input__inner{background-color: #eff5ff;}
 textarea.el-textarea__inner{ background-color: #fff;}
 .el-card__header{
   padding: 12px 20px;

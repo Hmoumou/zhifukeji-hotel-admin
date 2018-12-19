@@ -41,9 +41,10 @@
       <div class="addbg">
         <div class="topbg"></div>
         <div class="downbg">
-          <div class="addBtn">
+          <!-- <div class="addBtn">
               <div class="iconRadio"></div>
-          </div>
+          </div> -->
+           <upload></upload>
           <div class="addText">
             <span>标题</span>
             <el-input v-model="addObj.title" style="width:70%"   placeholder="请输入内容"></el-input>
@@ -65,8 +66,12 @@
 </template>
 
 <script>
+import upload from '@/components/imgupload/hotel-photo.vue'
   export default {
     name: "photos",
+    components:{
+      upload
+    },
     data() {
       return {
         showAdd:false,
@@ -171,7 +176,7 @@
     justify-content: space-around;
     align-items: center;
     .addbg{
-      height: 50%;
+      height: 70%;
       width: 31.25%;
       .topbg{
         height: 9%;

@@ -18,10 +18,20 @@
         <div v-for="(i,index) in titleF"  :key='index' class="mesBox" >
           <div class="leftText">{{i.title}}</div>
           <div class="rightText">
-            <el-time-picker
-              v-model="i.detail"
-              placeholder="请选择时间">
-            </el-time-picker>
+            <el-time-select
+             v-model="i.detail"
+              :picker-options="{
+                start: '00:00',
+                step: '00:30',
+                end: '23:45'
+              }"
+              placeholder="选择时间">
+            </el-time-select>
+            <!-- <el-date-picker
+            v-model="i.detail"
+            type="date"
+            placeholder="选择日期">
+          </el-date-picker> -->
           </div>
         </div>
       </div>
@@ -91,10 +101,10 @@
       return {
         //入离时间
         titleF: [
-          {title: "最早入住", detail: ""},
-          {title: "最晚入住", detail: ""},
-          {title: "最早离店", detail: ""},
-          {title: "最晚离店", detail: ""},
+          {title: "最早入住", detail: "06:30"},
+          {title: "最晚入住", detail: "06:30"},
+          {title: "最早离店", detail: "06:30"},
+          {title: "最晚离店", detail: "06:30"},
         ],
         //膳食安排
         titleT: [
@@ -110,9 +120,9 @@
         changeFour:true,
 
         //儿童政策
-        chileMesDetail:"Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos",
+        chileMesDetail:"阿里云计算，阿里云计算，阿里云计算，阿里云计算，阿里云计算，阿里云计算，阿里云计算，阿里云计算，阿里云计算，阿里云计算，阿里云计算计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，",
         //動物
-        animousDetail:"Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos、Huluobos",
+        animousDetail:"计算机，计算机，阿里云计算，阿里云计算，阿里云计算，计算机，阿里云计算，阿里云计算，阿里云计算，阿里云计算，计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，计算机，阿里云计算",
       }
     },
     methods:{

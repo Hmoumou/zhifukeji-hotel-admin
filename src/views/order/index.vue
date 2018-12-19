@@ -198,7 +198,7 @@ export default {
     .searchBox {
         border:1px solid #75b8fc;
         border-radius: 20px;
-        background: #f9fbff;
+        background: #eff5ff;
         display: inline-block;
         margin-left: 45%;
         .icon-sousuo {

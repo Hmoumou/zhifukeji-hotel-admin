@@ -3,8 +3,8 @@
       <div>
         <el-card class="box-card carditem clearfix order-item">
           <div slot="header" class="header">
-            <span class="title">修改信息</span>
-            <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" @click="toChange">修改信息</el-button>
+            <span class="title" >修改信息</span>
+            <el-button style="float: right; padding: 3px 0;margin-top: 0px;" type="text" @click="handleCancel">取消</el-button>
           </div>
         </el-card>
         <el-card class="box-card mesList">
@@ -83,7 +83,7 @@
           </div>
         </el-card>
         <div class="submitBtn">
-            <el-button  type="primary" round size="medium ">
+            <el-button  type="primary" round size="medium " @click="handleOk">
               完     成
             </el-button>
         </div>
@@ -132,6 +132,15 @@
       toChange(){
         this.$router.push("/layout/sellerCenterChange")
       },
+      handleOk(){
+        // this.$axios.post('').then(res=>{
+
+        // })
+        this.$router.push('/layout/sellerCenter')
+      },
+      handleCancel(){
+        this.$router.push('/layout/sellerCenter')
+      }
     }
 	}
 </script>
@@ -152,16 +161,17 @@
       height: 50px;
       line-height: 50px;
       display: block;
-      width: 650px;
+     width: 100%;
+     margin-bottom: 10px;
       .leftText{
         font-weight: 500;
         font-size: 14px;
-        width: 230px;
+        width:120px;
         float: left;
       }
       .rightText{
-        width: 420px;
-        float: right;
+        width: 60%;
+        display:inline-block;
       }
     }
   }
@@ -180,19 +190,21 @@
 
   .el-card__header,.el-card{
   }
-  .el-select{
+ .el-select{
     width: 100%;
   }
   .el-date-editor.el-input, .el-date-editor.el-input__inner{
     width: 100%;
   }
-  .el-input__inner { padding: 18px;background: #f9fbff;border: none;}
+  
+  /deep/ .el-input__inner { background: #f9fbff;border: none; padding-left: 15px;}
   .el-button--text { margin-top: 9px;}
 
 </style>
 <style>
   .el-main { text-align: left; line-height: 1;}
   .el-button{ padding: 6px 20px; font-size: 14px;}
+  .el-textarea__inner{width: 60%;}
 
 
 

@@ -192,8 +192,8 @@
                 console.log('现金支付');
             },
             handleAdduser(){
-              console.log('胡然然');
-              this.arr.push({
+                
+                this.arr.push({
                   username: '',
                   houseId: '',
                   houseType: '',
@@ -292,7 +292,7 @@
             }
             .item{
                 font-size: 14px;
-                font-weight: 550;
+                font-weight: 700;
                 margin-bottom: 15px;
             }
             .data{
@@ -351,7 +351,7 @@
         border: 1px dashed #518dfd;
         box-sizing: border-box;
         position: relative;
-        height: 300px;
+        height: 286px;
         .icon{
             width: 100%;
             position: absolute;

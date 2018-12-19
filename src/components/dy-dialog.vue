@@ -16,7 +16,6 @@
           inactive-text="关闭">
         </el-switch>
         <span class="fll">房间网订渠道</span>
-
       </p>
     </div>
     <div slot="footer" class="dialog-footer clearfix">

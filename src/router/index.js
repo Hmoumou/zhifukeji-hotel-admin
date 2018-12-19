@@ -5,31 +5,31 @@ Vue.use(Router)
 
 const components = {
   layout:()=>import('../views/layout/layout.vue'),
-  login:()=>import('../views/login/login.vue'),
-  register:()=>import('../views/register/index.vue'),
+  // login:()=>import('../views/login/login.vue'),
+  // register:()=>import('../views/register/index.vue'),
 }
 
 export default new Router({
   routes: [
+    // {
+    //   path:'/',
+    //   // redirect:'/login',
+    //   name:'login',
+    //   component:components.login
+    // },
+    // {
+    //   path:'/register',
+    //   name:'register',
+    //   component:components.register
+    // },
     {
-      path:'/',
-      // redirect:'/login',
-      name:'login',
-      component:components.login
-    },
-    {
-      path:'/register',
-      name:'register',
-      component:components.register
-    },
-    {
-      path: '/layout',
+      path: '/',
       name: 'layout',
       component:components.layout,
-      redirect:'/layout/layout.vue',
+      redirect:'/layout/home',
       children:[
         {
-          path: 'home',
+          path: '/layout/home',
           name: 'home',
           component:()=>import('../views/home/index.vue'),
           meta:{
@@ -37,7 +37,7 @@ export default new Router({
           },
         },
         {
-          path: 'check',
+          path: '/layout/check',
           name: 'check',
           component:()=>import('../views/check/index.vue'),
           meta:{
@@ -45,7 +45,7 @@ export default new Router({
           },
         },
         {
-          path: 'houseType',
+          path: '/layout/houseType',
           name: 'houseType',
           component:()=>import('../views/houseType/index.vue'),
           meta:{
@@ -53,7 +53,7 @@ export default new Router({
           },
         },
         {
-          path: 'houseState',
+          path: '/layout/houseState',
           name: 'houseState',
           component:()=>import('../views/houseState/index.vue'),
           meta:{
@@ -62,7 +62,7 @@ export default new Router({
         },
         //订单管理 --未处理订单
         {
-          path: 'order',
+          path: '/layout/order',
           name: 'order',
           component:()=>import('../views/order/index.vue'),
           meta:{
@@ -71,7 +71,7 @@ export default new Router({
         },
         //订单管理 --订单查询
         {
-          path: 'orderSelect',
+          path: '/layout/orderSelect',
           name: 'orderSelect',
           component:()=>import('../views/order/orderSelect.vue'),
           meta:{
@@ -80,7 +80,7 @@ export default new Router({
         },
          //测试页 ---结束的时候请删掉
          {
-          path: 'test',
+          path: '/layout/test',
           name: 'test',
           component:()=>import('../views/test/index.vue'),
           meta:{
@@ -88,7 +88,7 @@ export default new Router({
           },
         },
         {
-          path: 'member',
+          path: '/layout/member',
           name: 'member',
           component:()=>import('../views/member/index.vue'),
           meta:{
@@ -96,7 +96,7 @@ export default new Router({
           },
         },
         {
-          path: 'evaluation',
+          path: '/layout/evaluation',
           name: 'evaluation',
           component:()=>import('../views/evaluation/index.vue'),
           meta:{
@@ -104,7 +104,7 @@ export default new Router({
           },
         },
         {
-          path: 'sellerCenter',
+          path: '/layout/sellerCenter',
           name: 'sellerCenter',
           component:()=>import('../views/sellerCenter/index.vue'),
           meta:{
@@ -113,7 +113,7 @@ export default new Router({
         },
         //商户中心    后加的
         {
-          path: 'sellerCenterChange',
+          path: '/layout/sellerCenterChange',
           name: 'sellerCenterChange',
           component:()=>import('../views/sellerCenter/change.vue'),
           meta:{
@@ -121,7 +121,7 @@ export default new Router({
           },
         },
         {
-          path: 'phoneWay',
+          path: '/layout/phoneWay',
           name: 'phoneWay',
           component:()=>import('../views/sellerCenter/phoneWay.vue'),
           meta:{
@@ -129,7 +129,7 @@ export default new Router({
           },
         },
         {
-          path: 'policy',
+          path: '/layout/policy',
           name: 'policy',
           component:()=>import('../views/sellerCenter/policy.vue'),
           meta:{
@@ -137,7 +137,7 @@ export default new Router({
           },
         },
         {
-          path: 'photos',
+          path: '/layout/photos',
           name: 'photos',
           component:()=>import('../views/sellerCenter/photos.vue'),
           meta:{
@@ -148,7 +148,7 @@ export default new Router({
 
 
         {
-          path: 'auditCenter',
+          path: '/layout/auditCenter',
           name: 'auditCenter',
           component:()=>import('../views/auditCenter/index.vue'),
           meta:{
@@ -156,7 +156,7 @@ export default new Router({
           },
         },
         {
-          path: 'tradingRecord',
+          path: '/layout/tradingRecord',
           name: 'tradingRecord',
           component:()=>import('../views/tradingRecord/index.vue'),
           meta:{

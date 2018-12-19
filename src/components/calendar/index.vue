@@ -33,13 +33,15 @@
           </td>
         </tr>
       </tbody>
-    </table>
+    </table> 
+
+    <dyDialog v-if="showDialog" v-model='showDialog' :options='userData'></dyDialog>
   </div>
 </template>
 
 <script>
   import moment from 'moment'
-  import dyDialog from '../dy-dialog'
+  import dyDialog from '../dy-dialog.vue'
 
   export default {
     name: '',
@@ -141,14 +143,34 @@
     },
     methods: {
       handleClick(e) {
+        console.log('触发');
         let target = e.target.classList.contains('item-num')&&e.target;
-        if(target) {
+        if(target.innerText > 0) {
+          this.showDialog = true
+          // 得到所点击的是第几行第几列
           console.log(target.dataset.col + '列')
           console.log(target.dataset.row + '行')
+          let col = target.dataset.col
+          let row = target.dataset.row
+          this.userData.time = this.dateData.weekDate[col]
+          if(row == 0){
+              this.userData.houseType = '豪华大床房'
+          }else if(row == 1){
+              this.userData.houseType = '双标间'
+          }else if(row == 2){
+              this.userData.houseType = '豪华海景大床房'
+          }else if(row == 3){
+              this.userData.houseType = '豪华家庭房'
+          }else if(row == 4){
+              this.userData.houseType = '天字一号房'
+          }    
+        }else if(target.innerText == 0){
+          this.$message.warning('房间已满')
         }
       },
       handleClose() {
         this.centerDialogVisible = false
+        this.showDialog = false
       },
       setLine () { //斜线设置
           let box = this.$refs.speCell
@@ -211,4 +233,7 @@
 
 <style scoped lang='scss'>
   @import './index.scss';
+  .box{
+    margin-bottom: 10px;
+  }
 </style>

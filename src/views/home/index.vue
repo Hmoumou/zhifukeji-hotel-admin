@@ -76,6 +76,9 @@ import userComment from '@/components/userComment.vue'
     .left{
         
     }
+    .carditem{
+        margin-bottom: 10px;
+    }
 }
 </style>
 

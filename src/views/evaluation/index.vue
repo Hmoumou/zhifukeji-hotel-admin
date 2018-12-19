@@ -59,8 +59,16 @@
       <div class="select clearfix">
         <el-button type="primary" @click="handleSelect" class="select-btn flr mr10">查询</el-button>
         <span class="fs14 fw mr10">按时间选择</span>
-        <el-date-picker v-model="selectData.inDate" type="date" class="mr10" placeholder="入住日期"></el-date-picker>
-        <el-date-picker v-model="selectData.goDate" type="date" class="mr10" placeholder="离店日期"></el-date-picker>
+        <el-date-picker
+            v-model="selectData.inDate"
+            class="time-date"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期">
+        </el-date-picker>
+        <!-- <el-date-picker v-model="selectData.inDate" type="date" class="mr10" placeholder="入住日期"></el-date-picker>
+        <el-date-picker v-model="selectData.goDate" type="date" class="mr10" placeholder="离店日期"></el-date-picker> -->
       </div>
       <div class="userItem" v-for="(item,index) in 4" :key="index" :model="userData">
         <el-row>
@@ -247,7 +255,9 @@ export default {
   border: 0.1px solid #f1f1f1;
   position: relative;
 }
-
+.time-date{
+  border: 1px solid #b3ccff;
+}
 .top1 {
   border: 0.1px solid #fff;
   position: absolute;
