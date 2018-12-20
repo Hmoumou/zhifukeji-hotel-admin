@@ -17,7 +17,7 @@
             <div class="grid-content bg-purple">
               <!-- start -->
               <div
-                class="homeItem"
+               class="homeItem"
                 v-for="(item,index) in homeData"
                 id="item"
                 :key="index"
@@ -70,30 +70,39 @@
       </div>
     </el-card>
     <!-- details -->
-    <div class="houseTypeDetail" :model="this.homeData">
+    <div class="houseTypeDetail" >
       <el-card class="box-card carditem"  >
         <div slot="header" class="header clearfix">
           <!-- {{homeData[activeIndex].homeType}} -->
-          <span class="title"></span>
+          <span class="title">
+            {{homeData[activeIndex].homeType}}
+          </span>
         </div>
 
         <div class="photoBrowse clearfix">
           <!-- 左箭头 -->
-          <img class="rightArrow" src="@/image/商户中心+箭头/rightArrow.png" @click="handleLast">
+          <img class="rightArrow" src="@/image/商户中心+箭头/rightArrow.png" @click="handleSlide(-1)">
           <!-- 中间的房型图 -->
           <div class="houseTypePhoto clearfix">
             <div class="box">
-              <img :src="photoArr.img" :model="photoArr" v-for="o in 5" :key="o" alt="#">
+              <swiper :options="swiperOption1" ref="mySwiper1" v-show="photoIndex == 0">
+                <swiper-slide v-for="(item, index) in photoArr" :key="index"><img :src="item" alt="" :key="index"></swiper-slide>
+                <div class="swiper-pagination"  slot="pagination"></div>
+              </swiper>
+              <swiper :options="swiperOption1" ref="mySwiper2" v-show="photoIndex == 1">
+                <swiper-slide v-for="(item, index) in photoArr2" :key="index"><img :src="item" alt="" :key="index"></swiper-slide>
+                <div class="swiper-pagination"  slot="pagination"></div>
+              </swiper>
             </div>
           </div>
           <!-- 右箭头 -->
-          <img class="leftArrow" src="@/image/商户中心+箭头/leftArrow.png" @click="handleNext">
+          <img class="leftArrow" src="@/image/商户中心+箭头/leftArrow.png" @click="handleSlide(1)">
         </div>
         <div class="asideLeft">
           <!-- <button class="btn">房型相册</button>
           <button class="btn">图文详情</button>-->
-          <div :class="isGetPhoto?'active':'btn'" @click="handleGetPhoto">房型相册</div>
-          <div :class="isGetDetail?'active':'btn'" @click="handleGetDetail">图文详情</div>
+          <div class="btn" :class="{active: photoIndex == 0}" @click="photoIndexChange(0)">房型相册</div>
+          <div class="btn" :class="{active: photoIndex == 1}" @click="photoIndexChange(1)">图文详情</div>
         </div>
 
         <div class="textDetail clearfix">
@@ -153,18 +162,43 @@
 </template>
 
 <script>
+  import {swiper, swiperSlide} from 'vue-awesome-swiper'
+  import 'swiper/dist/css/swiper.css'
+
 export default {
   name: "homeTypeList",
+  components: {
+    swiper,
+    swiperSlide
+  },
   data() {
     return {
       // details
-      isGetPhoto:true,
-      isGetDetail:false,
-      photoArr:{
-        img:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2213670986,2923778817&fm=27&gp=0.jpg'
+
+      swiperOption1:{
+        pagination: {
+          el: '.swiper-pagination'
+        },
+        slidesPerView : 3,
+        loop: true
       },
+      photoIndex: 0,
+      photoArr:[
+        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2213670986,2923778817&fm=27&gp=0.jpg',
+        'http://placehold.it/423x300/f00',
+        'http://placehold.it/423x300/6700ff',
+        'http://placehold.it/423x300/409eff',
+        'http://placehold.it/423x300/ff0'
+      ],
+      photoArr2: [
+        'http://placehold.it/423x300/ccc',
+        'http://placehold.it/423x300/c10',
+        'http://placehold.it/423x300/c11',
+        'http://placehold.it/423x300/f20',
+        'http://placehold.it/423x300/0da',
+      ],
       // list
-      activeIndex:'',
+      activeIndex: 0,
       isdialog: false,
       index: "",
       homeData: [
@@ -254,7 +288,7 @@ export default {
     handleClick(index) { // 点击房型item
       this.activeIndex = index
       // console.log(this.activeIndex);
-    }, 
+    },
     handleDelete(index) { // 点击删除
       this.isdialog = true;
       this.index = index;
@@ -264,20 +298,17 @@ export default {
       this.isdialog = false;
     },
     // details---------------------------------------
-    handleLast(){
-
+    handleSlide (num) {
+      let swiper = this.photoIndex == 0 ? this.$refs.mySwiper1.swiper : this.$refs.mySwiper2.swiper
+      if(num == 1) {
+        swiper.slideNext()
+      } else {
+        swiper.slidePrev()
+      }
     },
-    handleGetPhoto(){
-      this.isGetPhoto = true
-      this.isGetDetail  = false
+    photoIndexChange(index){
+      this.photoIndex = index;
     },
-    handleGetDetail(){
-      this.isGetPhoto = false
-      this.isGetDetail  = true
-    },
-    handleNext(){
-
-    }
   },
   created() {
     // this.getData()
@@ -384,17 +415,7 @@ export default {
 }
 .asideLeft {
   width: 15%;
-  .active{
-    border: 1px solid #f1f1f1;
-    // background: #f1f1f1;
-    background: url('../../image/房型/矩形.png')no-repeat;
-    background-size: 100% 100%;
-    line-height: 60px;
-    color: #fff;
-    width: 100%;
-    height: 60px;
-    text-align: center;
-  }
+
   .btn{
     border: 1px solid #e1ecff;
     background: #f9fbfe;
@@ -407,6 +428,17 @@ export default {
   .btn:active{
     background: url('../../image/房型/矩形.png')no-repeat;
     background-size: 100% 100%;
+  }
+  .active{
+    border: 1px solid #f1f1f1;
+    // background: #f1f1f1;
+    background: url('../../image/房型/矩形.png')no-repeat;
+    background-size: 100% 100%;
+    line-height: 60px;
+    color: #fff;
+    width: 100%;
+    height: 60px;
+    text-align: center;
   }
 }
 .photoBrowse {
@@ -423,21 +455,19 @@ export default {
     left: 20px;
   }
   ///房型轮播图
-  .houseTypePhoto{
+  .houseTypePhoto {
     margin: 26px auto;
-    width: 80%;
     height: 100%;
-    overflow-x: hidden;
-     .box{
-        width: 1850px;
-        img{
-        margin-right:20px;
-        float: left;
-        width: 350px 
+    padding: 0 50px;
+    box-sizing: border-box;
+    /*overflow-x: hidden;*/
+    .box {
+      img {
+        height: 248px;
+      }
     }
-     }
   }
-  
+
   .rightArrow {
     position: absolute;
     top: 150px;
