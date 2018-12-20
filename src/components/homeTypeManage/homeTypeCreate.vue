@@ -37,6 +37,10 @@
       </el-form>
       <!-- 左表格 -->
       <el-form  class="leftForm" :model='formLeftData' label-width="100px" label-position='left'>
+          <!-- 添加 单价 -->
+        <el-form-item label="价格" prop="price">
+            <el-input class="detailInfo"  placeholder='请输入价格'></el-input>
+        </el-form-item>
         <el-form-item label="面积" prop="houseArea">
             <el-input class="detailInfo"  placeholder='33平方米'></el-input>
         </el-form-item>
@@ -91,6 +95,7 @@ export default {
         describe: ""
       },
       formLeftData: {
+        price:"",
         houseArea: "",
         houseType: "",
         floor: "",
@@ -101,7 +106,9 @@ export default {
     };
   },
   methods: {},
-  created() {}
+  created(){
+    
+  }
 };
 </script>
 
@@ -141,6 +148,7 @@ export default {
     font-weight: 550
 }
 /deep/ input.el-input__inner{
+    padding-left: 20px;
     background-color: #eff5ff;
 }
 /deep/ textarea.el-textarea__inner{

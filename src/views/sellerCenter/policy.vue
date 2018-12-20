@@ -108,10 +108,10 @@
         ],
         //膳食安排
         titleT: [
-          {title: "姓名", detail: "羊羊羊"},
-          {title: "移动电话", detail: "18332725321"},
-          {title: "固定电话", detail: "+86 18332725321"},
-          {title: "邮箱地址", detail: "8888888888ccccc@qq.com"},
+          {title: "早餐", detail: "6:00"},
+          {title: "午餐", detail: "自助 12:00"},
+          {title: "下午茶", detail: "自助 18:00"},
+          {title: "晚餐", detail: "自助 22:00"},
         ],
         //四個顯示與否的標識符
         changeF:true,

@@ -1,18 +1,24 @@
 <template>
   <div class="order">
-    <div class="orderScreen">
+    <div class="orderScreen clearfix">
       <el-card class="box-card carditem clearfix order-item">
-        <div slot="header" class="header">
-          <span class="title">订单筛选</span>
-          <div class="searchBox" :model="searchData">
-            <i class="iconfont icon-sousuo"></i>
-            <el-input v-model="searchData.text" placeholder="订单号/预订人/预订人手机号" class="input"></el-input>
-            <el-button type="primary" class="btn" @click="handleSearch">搜索</el-button>
-          </div>
-
+        <div slot="header" class="header clearfix">
           <el-button style="float: right; padding: 3px 0" type="text">更多搜索选项
             <i class="iconfont icon-arw-top-copy"></i>
           </el-button>
+          <span class="title">订单筛选</span>
+          <!-- <div class="searchBox" :model="searchData">
+            <i class="iconfont icon-sousuo"></i>
+            <el-input v-model="searchData.text" placeholder="订单号/预订人/预订人手机号" class="input"></el-input>
+            <el-button type="primary" class="btn" @click="handleSearch">搜索</el-button>
+          </div> -->
+           <div class="seachBox  clearfix">
+                <div class="seek-box">
+                    <input type="text" v-model="searchData.text" placeholder="订单号/预定人/预订人手机号">
+                    <div class="seek" @click="handleClick">搜索</div>
+                </div>
+           </div>
+         
         </div>
       </el-card>
     </div>
@@ -137,6 +143,7 @@ export default {
   name: "order",
   data() {
     return {
+        isClick:true,
         activeIndex:'',
          orderData:{
              username:'梁朝伟',
@@ -170,7 +177,18 @@ export default {
     handleSearch() {},
     handleSelect(key, keyPath) {
         console.log(key, keyPath);
-      }
+      },
+       handleClick(e){
+                if(this.isClick){
+                    this.isClick = false
+                    console.log(e);
+                    console.log('111111');
+                    setTimeout(()=>{
+                        this.isClick = true
+                    },4000)
+                }
+               
+            }
   }
 };
 </script>
@@ -195,26 +213,48 @@ export default {
         left: -20px;
         right: -20px;
         }
-    .searchBox {
-        border:1px solid #75b8fc;
-        border-radius: 20px;
-        background: #eff5ff;
+    .seachBox{
+        margin-top: 5px;
+        margin-left: 54%;
         display: inline-block;
-        margin-left: 45%;
-        .icon-sousuo {
-        color: #518dfd;
-        padding: 0 20px;
+        width: 316px;
+    }
+    .seek-box {
+        display: inline-block;
+        width: 316px;
+        box-sizing: border-box;
+        line-height: 36px;
+        input {
+            box-sizing: border-box; 
+            height:36px;
+            width: 260px;
+            padding-left: 50px;
+            outline: none;
+            color: #666;
+            background: url("../../image/评价管理/图标切图_03_11.png") no-repeat 10px center;
+            background-size: 16px;
+            border: 1px solid #b3ccff;
+            border-top-left-radius: 18px 50%;
+            border-bottom-left-radius: 18px 50%;
+            border-right: none;
         }
-        .input {
-        border: none;
-        width: 250px;
+        .seek {
+            display: inline-block;
+            float: right;
+            width: 56px;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            margin-top: 1px;
+            background: #518dfd;
+            height: 36px;
+            // border: 1px solid #518dfd;
+            border-top-right-radius: 18px 50%;
+            border-bottom-right-radius: 18px 50%;
+            user-select: none;
         }
-        .btn {
-             overflow: hidden;
-                border-radius: 0;
-                border-top-right-radius: 20px;
-                border-bottom-right-radius: 20px;
-                padding: 10px 24px;
+        .seek:active{
+            background: #409eff;
         }
     }
   }

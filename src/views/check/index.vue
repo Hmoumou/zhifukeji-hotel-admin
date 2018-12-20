@@ -95,17 +95,17 @@
                                 <el-form-item label="姓名" prop="username"  >
                                     <el-input   placeholder='请输入姓名' v-model="item.username"></el-input>
                                 </el-form-item>
-                                <el-form-item label="身份证号" prop="IDcard" >
-                                    <el-input placeholder='请输入身份证号' v-model="item.idCard"></el-input>
+                                <el-form-item label="身份证号" prop="IDcard"  >
+                                    <el-input placeholder='请输入身份证号' @blur="idVerify(index)" v-model="item.idCard"></el-input>
                                 </el-form-item>
                                 <el-form-item label="联系电话" prop="phone" >
-                                    <el-input placeholder='请输入联系电话' v-model="item.phone"></el-input>
+                                    <el-input placeholder='请输入联系电话' @blur="phoneVerify(index)"  v-model="item.phone"></el-input>
                                 </el-form-item>
                             </el-form>
                         </el-card>
                     </div>
                 </el-col>
-                <el-col :span="12" @click.native="handleAdduser">
+                <el-col :span="12" @click.native="handleAdduser()">
                     <div class="grid-content bg-purple-light">
                         <el-card class="btm-right box-card clearfix " >
                             <div class="icon">
@@ -116,9 +116,6 @@
                     </div>
                 </el-col>
             </el-row>
-
-
-
         </div>
         <div class="box" v-if="Yes">
             <div class="box-inner">
@@ -132,8 +129,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </template>
 
@@ -146,6 +141,7 @@
                 isSuccess:false,
                 Yes:false,
                 isOk:true,
+                // 入住订单绑定的数据
                 formData:{
                     houseType:'',
                     check:'',
@@ -159,6 +155,7 @@
                     earnest:88,
                     total:4528
                 },
+                // 入住人数据
                 userData:{
                     username:'王小明',
                     houseId:'110',
@@ -173,12 +170,33 @@
                     houseId: '',
                     houseType: '',
                     idCard: '',
-                    phone: ''
+                    phone: '',
+                    idIsOk:false,
+                    phoneIsOk:false,
                   }
                 ]
             }
         },
         methods:{
+            // 身份证号验证
+            idVerify(index){
+                var reg = /(^\d{17}(\d|X|x)$)/
+                if(!reg.test(this.arr[index].idCard)){
+                    this.$message.error('身份证格式填写错误')
+                }else{
+                    this.arr[index].idIsOk = true
+                }
+            },
+            // 手机号验证
+            phoneVerify(index){
+                var regs = /^1[3-9]\d{9}$/
+                if(!regs.test(this.arr[index].phone)){
+                    this.$message.error('手机号格式填写错误')
+                }else{
+                    this.arr[index].phoneIsOk = true
+                }
+            },
+            // 支付方式
             handlePayToWX(){
                 console.log('微信');
             },
@@ -191,15 +209,27 @@
             handlePayToMoney(){
                 console.log('现金支付');
             },
+            // 点击添加一个新的入住人
             handleAdduser(){
-                
+                // 如果数据不为空且身份证号手机号验证通过
+                if(this.arr[this.arr.length-1].username&&
+                this.arr[this.arr.length-1].idCard&&
+                this.arr[this.arr.length-1].phone&&
+                this.arr[this.arr.length-1].idIsOk&&
+                this.arr[this.arr.length-1].phoneIsOk){
+                //   添加一个新的空白入住人盒子
                 this.arr.push({
-                  username: '',
-                  houseId: '',
-                  houseType: '',
-                  idCard: '',
-                  phone: ''
-                })
+                        username: '',
+                        houseId: this.arr[this.arr.length-1].houseId,
+                        houseType: this.arr[this.arr.length-1].houseType,
+                        idCard: '',
+                        phone: '',
+                        idIsOk:false,
+                        phoneIsOk:false
+                    })
+                }else{
+                      this.$message.warning('请先完善上一入住人信息哦~')  
+                }
             },
             handleCheck(){
                this.centerDialogVisible=true
@@ -393,7 +423,7 @@
 .el-select__caret{
     color: #409eff;
 }
-.el-input__inner { padding: 20px; }
+.el-input__inner { padding-left: 20px; }
 .el-dialog--center{
     color:#2b2b2b;
    margin-top: 30vh !important;

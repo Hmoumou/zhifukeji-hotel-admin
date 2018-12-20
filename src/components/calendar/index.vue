@@ -184,6 +184,8 @@
 
           line.style.width = hypotenuse + '100px'
           line.style.transform = `translate(-50%, -50%) rotateZ(${rotateDeg}deg)`;
+          line.style.transformOrigin = '0 0'
+          line.style.transform = `rotateZ(${rotateDeg}deg)`;
       },
       getDate () {
         let unix = this.testData.time //unix 时间戳
