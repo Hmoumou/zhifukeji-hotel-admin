@@ -24,7 +24,8 @@
 
     <!--上传图片用-->
     <el-upload
-      style="float:left;width: 31.33%;box-sizing:border-box;margin-bottom:20px;margin-left: 10px;"
+      v-if="allArr<5"
+      style="float:left;width: 19%;box-sizing:border-box;margin-bottom:20px;margin-left: 10px;"
       class="el-upload--change"
       v-show="isCanUpload"
       action="https://upload-z1.qiniup.com"
@@ -36,7 +37,7 @@
       :on-success="handleSuccess">
       <div class="dy-upload-wrap">
         <i  class="el-icon-plus el-icon-circle-plus"></i>
-        <div class="upload-text">添加图片</div>
+        <div class="upload-text fs14">添加图片</div>
       </div>
     </el-upload>
 
@@ -52,7 +53,7 @@
     </el-upload>
     <div v-show="!isCanUpload" @click="handleLimit">
       <i  class="el-icon-plus el-icon-circle-plus"></i>
-      <div class="upload-text">添加图片</div>
+      <div class="upload-text fs14">添加图片</div>
     </div>
     <!--预览图片用-->
     <el-dialog
@@ -74,13 +75,13 @@
 
   export default {
     props: {
-      value: {
+      value: { // 上传用的图片数组
         type: Array,
         default () {
           return []
         }
       },
-      imgList: {
+      imgList: { // 传入的渲染用的数组
         type: Array,
         default () {
           return []
@@ -99,7 +100,7 @@
         },
         isCanUpload: true,
         currentValue: this.value,
-        currentMax: this.max, 
+        currentMax: this.max,
         dialogVisible: false, // 是否显示弹框
         previewImg: '', // 预览的图片的链接
         changeIndex: '', // 需要修改图片的index
@@ -153,19 +154,25 @@
       imgList(val) {
         this.currentMax = this.max - val.length;
       }
+    },
+    computed: {
+      allArr() {
+        return this.value.length + this.imgList.length
+      }
     }
   }
 </script>
 
 <style scoped lang="scss">
-  $wrap-width:33.33%;
-  $wrap-height: 200px;
+
+  $wrap-width:20%;
+  $wrap-height: 160px;
 
   .clearfix::after {
     content: '';
     display: table;
     clear: both;
-    visibility: hiddewn;
+    visibility: hidden;
   }
 
   li {
@@ -183,13 +190,13 @@
     border-radius: 4px;
     border: 1px dashed #4567fc;
     text-align: center;
-    padding-top: 50px;
+    padding-top: 55px;
     box-sizing: border-box;
     // margin-left: 20px;
 
     /deep/ .el-icon-circle-plus {
       color: #4567fc;
-      font-size: 60px;
+      font-size: 35px;
     }
 
 
@@ -205,9 +212,15 @@
     position: relative;
     // margin-left: 20px;
     margin-bottom: 20px;
+    overflow: hidden;
     float: left;
     width: $wrap-width;
     height: $wrap-height;
+
+    &:hover .dy-upload-img--bottom{
+        transform: translateY(0);
+
+    }
 
     &:first-child {
       margin-left: 0;
@@ -227,9 +240,11 @@
       left: 0;
       right: 0;
       bottom: 0;
-      opacity: .6;
+      opacity: .4;
+      transform: translateY(100%);
+      transition: transform ease .5s;
       background: #000;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
 
       .upload-img-btn {

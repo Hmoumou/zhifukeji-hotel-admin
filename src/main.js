@@ -10,14 +10,12 @@ import ElementUI from 'element-ui';
 import {$axios} from './utils/index.js'
 import VueCookies from 'vue-cookies'
 import 'element-ui/lib/theme-chalk/index.css';
-// import iView from 'iview';
-// import 'iview/dist/styles/iview.css';
+import 'iview/dist/styles/iview.css';
 
 Vue.prototype.$axios = $axios;
 
 Vue.use(ElementUI)
 Vue.use(VueCookies)
-// Vue.use(iView);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

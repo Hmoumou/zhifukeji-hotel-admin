@@ -9,7 +9,7 @@
         <span class="title">房型相册</span>
       </div>
       <span class="secondTitle">*图片尺寸：1920*900</span>
-      <div class="imageDiv ">  
+      <div class="imageDiv ">
          <upload :img-list='arr' v-model='uploadimg'></upload>
       </div>
     </el-card>
@@ -66,9 +66,7 @@ export default {
   .imageDiv {
     box-sizing: border-box;
     width: 100%;
-    height: 230px;
     margin-top: 20px;
-    margin-bottom: 20px;
   }
 }
 </style>
