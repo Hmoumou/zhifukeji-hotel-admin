@@ -2,7 +2,7 @@
   <div class="dy-checkbox-wrap">
     <CheckboxGroup v-model="currentValue">
       <Checkbox :label="item.label" :key="index" v-for="(item, index) in options" :disabled="disabled" v-if="!disabled||currentValue.indexOf(item.label)>=0">
-        <i class="iconfont circle" :class="item.icon"></i>
+        <i class="iconfont circle" :class="{[item.icon]: true, 'spe-icon': item.spe}"></i>
         <div class="checkbox-text">
           {{item.text}}
         </div>
@@ -98,6 +98,12 @@
 
     /deep/ .ivu-checkbox-wrapper {
       cursor: auto;
+    }
+
+    /*兼容iconfont图标不一致*/
+    .spe-icon {
+      font-size: 40px;
+      padding: 6px;
     }
   }
 </style>

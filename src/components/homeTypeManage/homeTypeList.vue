@@ -79,31 +79,51 @@
           </span>
         </div>
 
-        <div class="photoBrowse clearfix">
-          <!-- 左箭头 -->
-          <img class="rightArrow" src="@/image/商户中心+箭头/rightArrow.png" @click="handleSlide(-1)">
-          <!-- 中间的房型图 -->
-          <div class="houseTypePhoto clearfix">
-            <div class="box">
-              <swiper :options="swiperOption1" ref="mySwiper1" v-show="photoIndex == 0">
-                <swiper-slide v-for="(item, index) in photoArr" :key="index"><img :src="item" alt="" :key="index"></swiper-slide>
-                <div class="swiper-pagination"  slot="pagination"></div>
-              </swiper>
-              <swiper :options="swiperOption1" ref="mySwiper2" v-show="photoIndex == 1">
-                <swiper-slide v-for="(item, index) in photoArr2" :key="index"><img :src="item" alt="" :key="index"></swiper-slide>
-                <div class="swiper-pagination"  slot="pagination"></div>
-              </swiper>
+        <!--轮播图部分开始-->
+        <div class="swiper-container">
+          <swiper :options="swiperOption1" ref="mySwiper1" >
+            <!-- slides -->
+            <swiper-slide v-for="(item, index) in photoArr" :key="index">
+              <div class="swiper-img-wrap" style="background: #333;text-align: center;padding: 20px 0;">
+                <img :src="item" alt="">
+              </div>
+            </swiper-slide>
+            <!-- Optional controls -->
+            <div class="swiper-button-prev" slot="button-prev"></div>
+            <div class="swiper-button-next" slot="button-next"></div>
+          </swiper>
+          <div class="thumbs clearfix">
+            <div class="thumbs-item-wrap fll" v-for="(item, index) in photoArr" :key="index" :class="{active: slideIndex == index}" @click="handleClickThumbs(index)">
+              <img :src="item" alt="" class="thums-item-img">
             </div>
           </div>
-          <!-- 右箭头 -->
-          <img class="leftArrow" src="@/image/商户中心+箭头/leftArrow.png" @click="handleSlide(1)">
         </div>
-        <div class="asideLeft">
-          <!-- <button class="btn">房型相册</button>
-          <button class="btn">图文详情</button>-->
-          <div class="btn" :class="{active: photoIndex == 0}" @click="photoIndexChange(0)">房型相册</div>
-          <div class="btn" :class="{active: photoIndex == 1}" @click="photoIndexChange(1)">图文详情</div>
-        </div>
+        <!--轮播图部分结束-->
+        <!--<div class="photoBrowse clearfix">-->
+          <!--&lt;!&ndash; 左箭头 &ndash;&gt;-->
+          <!--<img class="rightArrow" src="@/image/商户中心+箭头/rightArrow.png" @click="handleSlide(-1)">-->
+          <!--&lt;!&ndash; 中间的房型图 &ndash;&gt;-->
+          <!--<div class="houseTypePhoto clearfix">-->
+            <!--<div class="box">-->
+              <!--<swiper :options="swiperOption1" ref="mySwiper1" v-show="photoIndex == 0">-->
+                <!--<swiper-slide v-for="(item, index) in photoArr" :key="index"><img :src="item" alt="" :key="index"></swiper-slide>-->
+                <!--<div class="swiper-pagination"  slot="pagination"></div>-->
+              <!--</swiper>-->
+              <!--<swiper :options="swiperOption1" ref="mySwiper2" v-show="photoIndex == 1">-->
+                <!--<swiper-slide v-for="(item, index) in photoArr2" :key="index"><img :src="item" alt="" :key="index"></swiper-slide>-->
+                <!--<div class="swiper-pagination"  slot="pagination"></div>-->
+              <!--</swiper>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; 右箭头 &ndash;&gt;-->
+          <!--<img class="leftArrow" src="@/image/商户中心+箭头/leftArrow.png" @click="handleSlide(1)">-->
+        <!--</div>-->
+        <!--<div class="asideLeft">-->
+          <!--&lt;!&ndash; <button class="btn">房型相册</button>-->
+          <!--<button class="btn">图文详情</button>&ndash;&gt;-->
+          <!--<div class="btn" :class="{active: photoIndex == 0}" @click="photoIndexChange(0)">房型相册</div>-->
+          <!--<div class="btn" :class="{active: photoIndex == 1}" @click="photoIndexChange(1)">图文详情</div>-->
+        <!--</div>-->
 
         <div class="textDetail clearfix">
           <span class="titleText">文字详情</span>
@@ -172,20 +192,27 @@ export default {
     swiperSlide
   },
   data() {
+    const vm = this; // 保存this 值给swiper 使用
     return {
       // details
-
+      slideIndex: 0,
       swiperOption1:{
-        pagination: {
-          el: '.swiper-pagination'
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
-        slidesPerView : 3,
-        loop: true
+        on:{
+          slideChange: function(index){
+            let realIndex = this.realIndex;
+            vm.slideIndex = realIndex;
+          },
+        },
       },
       photoIndex: 0,
       photoArr:[
         'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2213670986,2923778817&fm=27&gp=0.jpg',
-        'http://placehold.it/423x300/f00',
+        'http://placehold.it/423x300/0f0',
         'http://placehold.it/423x300/6700ff',
         'http://placehold.it/423x300/409eff',
         'http://placehold.it/423x300/ff0'
@@ -281,10 +308,17 @@ export default {
     //   console.log(res);
     // })
     // },
+    handleClickThumbs(index) {
+      console.log(index, index);
+      this.$refs.mySwiper1.swiper.slideTo(index + 1)
+      this.slideIndex = index;
+    },
     showCreateView() {
       this.$emit("showCreateView");
     },
-    handleChange(index) {},//点击修改
+    handleChange(index) {
+      this.$router.push('/layout/houseType/edit')
+    },//点击修改
     handleClick(index) { // 点击房型item
       this.activeIndex = index
       // console.log(this.activeIndex);
@@ -441,39 +475,91 @@ export default {
     text-align: center;
   }
 }
-.photoBrowse {
-  position: relative;
-  float: right;
-  width: 85%;
-  background-color: #f1f5fd;
-  height: 300px;
-  margin-bottom: 40px;
+/*.photoBrowse {*/
+  /*position: relative;*/
+  /*float: right;*/
+  /*width: 85%;*/
+  /*background-color: #f1f5fd;*/
+  /*height: 300px;*/
+  /*margin-bottom: 40px;*/
 
-  .leftArrow {
-    position: absolute;
-    top: 150px;
-    left: 20px;
+  /*.leftArrow {*/
+    /*position: absolute;*/
+    /*top: 150px;*/
+    /*left: 20px;*/
+  /*}*/
+  /*///房型轮播图*/
+  /*!*.houseTypePhoto {*!*/
+    /*!*margin: 26px auto;*!*/
+    /*!*height: 100%;*!*/
+    /*!*padding: 0 50px;*!*/
+    /*!*box-sizing: border-box;*!*/
+    /*!*!*overflow-x: hidden;*!*!*/
+    /*!*.box {*!*/
+      /*!*img {*!*/
+        /*!*height: 248px;*!*/
+      /*!*}*!*/
+    /*!*}*!*/
+  /*!*}*!*/
+
+  /*.rightArrow {*/
+    /*position: absolute;*/
+    /*top: 150px;*/
+    /*right: 20px;*/
+  /*}*/
+/*}*/
+
+/*轮播图样式*/
+.swiper-container {
+  /deep/ .swiper-button-prev, .swiper-button-next {
+    -webkit-background-size: 10px 20px;
+    background-size: 10px 20px;
   }
-  ///房型轮播图
-  .houseTypePhoto {
-    margin: 26px auto;
-    height: 100%;
-    padding: 0 50px;
+
+  .swiper-img-wrap {
+    background: #333;
+    text-align: center;
+    padding: 20px 0;
+  }
+}
+
+.thumbs {
+  background: #ebebeb;
+  padding: 15px 100px 30px;
+
+  .thumbs-item-wrap {
+    width: 20%;
     box-sizing: border-box;
-    /*overflow-x: hidden;*/
-    .box {
-      img {
-        height: 248px;
-      }
+    padding: 0 20px;
+
+    img {
+      display: block;
+      width: 100%;
+      border: 4px solid transparent;
     }
   }
 
-  .rightArrow {
-    position: absolute;
-    top: 150px;
-    right: 20px;
+  .active {
+    img {
+      border-color: #fff;
+    }
   }
 }
+
+/*.second-swiper-container {*/
+  /*background: #ebebeb;*/
+  /*padding: 15px 100px 30px;*/
+
+  /*/deep/ .swiper-slide .second-swiper-img-wrap img {*/
+    /*display: block;width: 100%;border: 4px solid transparent;*/
+  /*}*/
+
+  /*/deep/ .swiper-slide-active .second-swiper-img-wrap img {*/
+    /*border-color: #fff;*/
+  /*}*/
+/*}*/
+
+
 .textDetail {
   float: left;
   width: 100%;

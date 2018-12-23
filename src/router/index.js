@@ -52,6 +52,15 @@ export default new Router({
             title:'房型管理'
           },
         },
+        //房型管理修改
+        {
+          path: '/layout/houseType/edit',
+          name: 'houseType',
+          component:()=>import('../views/houseType/houseTypeNewCreate.vue'),
+          meta:{
+            title:'房型修改'
+          },
+        },
         {
           path: '/layout/houseState',
           name: 'houseState',

@@ -70,14 +70,14 @@
         <!-- <el-date-picker v-model="selectData.inDate" type="date" class="mr10" placeholder="入住日期"></el-date-picker>
         <el-date-picker v-model="selectData.goDate" type="date" class="mr10" placeholder="离店日期"></el-date-picker> -->
       </div>
-      <div class="userItem" v-for="(item,index) in 4" :key="index" :model="userData">
+      <div class="userItem" v-for="(item,index) in userData" :key="index" :model="userData">
         <el-row>
           <el-col :span="4">
             <div class="grid-content bg-purple">
               <div class="item-left">
-                <span class="fw fs14">用户{{userData.username}}</span>
-                <p class="c2 fs12">{{userData.evaluationTime}}</p>
-                <p class="c2 fs12">{{userData.hourTime}}</p>
+                <span class="fw fs14">用户{{item.username}}</span>
+                <p class="c2 fs12">{{item.evaluationTime}}</p>
+                <p class="c2 fs12">{{item.hourTime}}</p>
               </div>
             </div>
           </el-col>
@@ -90,21 +90,21 @@
                             <Star class="fll" :score="item.stars"/>
                         </div>
                     </div>
-                    <div class="commont fs14 mb10">{{userData.common}}</div>
-                    <div class="houseType fs14 c2 mb10">{{userData.houseType}}</div>
-                    
+                    <div class="commont fs14 mb10">{{item.common}}</div>
+                    <div class="houseType fs14 c2 mb10">{{item.houseType}}</div>
+
                      <!-- 回复逻辑 -->
-                    <div class="adminAsk" v-if="userData.adminAsk">
+                    <div class="adminAsk" v-if="item.adminAsk&&!item.isShow">
                       <el-row :gutter="20">
                         <el-col :span="19">
                           <div class="grid-content bg-purple">
                             <span class=" span blue fw fs14">回复</span>
-                            <p class="fs14">{{userData.adminAsk}}</p>
+                            <p class="fs14">{{item.adminAsk}}</p>
                           </div>
                         </el-col>
                         <el-col :span="5">
                           <div class="grid-content bg-purple clearfix">
-                            <p class="c2 fs14 mb10 flr">{{userData.commonTime}}</p>
+                            <p class="c2 fs14 mb10 flr">{{item.commonTime}}</p>
                             <div class="flr fs14">
                               <span class="c3  fw cs" @click="handleEdit(index)">编辑</span>
                               <span class="c2 ">  |  </span>
@@ -113,26 +113,25 @@
                           </div>
                         </el-col>
                       </el-row>
-                        
+
                     </div>
-                    <div class="box-Reply clearfix"  ref="huifubox"  v-else-if="isShow">                    
-                        <textarea :value='userData.adminAsk' name="adminAsk" class="reply" id="reply" cols="42" rows="5">
+                    <el-button  v-if="!item.adminAsk&&!item.isShow" class="flr" type='primary' @click="handleReply(index)">
+                      回复
+                    </el-button>
+                    <div class="box-Reply clearfix"    v-if="item.isShow" data-index="index">
+                        <textarea v-model='userData.adminAsk' name="adminAsk" class="reply"  cols="42" rows="5">
                         </textarea>
-                        <el-button @click="handleNo(index)" class="flr">取消</el-button>  
-                        <el-button @click="handleYes" type='primary flr mr10'>回复</el-button> 
+                        <el-button @click="handleNo(index)" class="flr">取消</el-button>
+                        <el-button @click="handleYes" type='primary flr mr10'>回复</el-button>
                     </div>
-                    <div class="box-Reply clearfix"  ref="huifubox"  v-else-if="isEdit">                    
-                        <textarea :value='userData.adminAsk' name="adminAsk" class="reply" id="reply" cols="42" rows="5">
-                        </textarea>
-                        <el-button @click="handleNo1(index)" class="flr">取消</el-button>  
-                        <el-button @click="handleYes1" type='primary flr mr10'>回复</el-button>
-                        
-                    </div>
-                    <el-button  v-else class="flr" type='primary' @click="handleReply(index)">
-                        回复
-                    </el-button>    
+                    <!--<div class="box-Reply clearfix"  v-if="item.isShow" data-index="test">-->
+                        <!--<textarea :value='userData.adminAsk' name="adminAsk" class="reply"  cols="42" rows="5">-->
+                        <!--</textarea>-->
+                        <!--<el-button @click="handleNo1(index)" class="flr">取消</el-button>-->
+                        <!--<el-button @click="handleYes1" type='primary flr mr10'>回复</el-button>-->
+                    <!--</div>-->
                 </div>
-                
+
             </div>
           </el-col>
         </el-row>
@@ -150,37 +149,61 @@ export default {
       isEdit:false,
       appraise: 0,
       title: "服务",
-      EditData:'',
-      userData: {
-        username: "小强",
-        adminAsk:'你的满意就是我们最大的动力',
-        // 
-        common:'今天天气不错，就是有点冷，对的就是冷~~~~，卡卡啦啦啦',
-        houseType:'豪华大床房',
-        evaluationTime: "2018-11-22",
-        hourTime: "12:02:50",
-        commonTime:'2018-11-22 12:02:50'
-      },
+
+      // userData: {
+      //   username: "小强",
+      //   adminAsk:'你的满意就是我们最大的动力',
+      //   //
+      //   common:'今天天气不错，就是有点冷，对的就是冷~~~~，卡卡啦啦啦',
+      //   houseType:'豪华大床房',
+      //   evaluationTime: "2018-11-22",
+      //   hourTime: "12:02:50",
+      //   commonTime:'2018-11-22 12:02:50'
+      // },
+      userData: [
+        {
+          username: "小强",
+          adminAsk:'',
+          //
+          common:'今天天气不错，就是有点冷，对的就是冷~~~~，卡卡啦啦啦',
+          houseType:'豪华大床房',
+          evaluationTime: "2018-11-22",
+          hourTime: "12:02:50",
+          commonTime:'2018-11-22 12:02:50',
+          EditData:''
+        },
+        {
+          username: "小强",
+          adminAsk:'你的满意就是我们最大的动力',
+          //
+          common:'今天天气不错，就是有点冷，对的就是冷~~~~，卡卡啦啦啦',
+          houseType:'豪华大床房',
+          evaluationTime: "2018-11-22",
+          hourTime: "12:02:50",
+          commonTime:'2018-11-22 12:02:50',
+          EditData:''
+        }
+      ],
       star: [
         {
           title: "服务",
           stars: 2,
-         
+
         },
         {
           title: "卫生",
           stars: 3,
-         
+
         },
         {
           title: "环境",
           stars: 4,
-        
+
         },
         {
           title: "配置",
           stars: 5,
-         
+
         }
       ],
       selectData: {
@@ -188,6 +211,14 @@ export default {
         goDate: ""
       }
     };
+  },
+  created() {
+    this.userData = this.userData.map(item => {
+      return {
+        ...item,
+        isShow: false
+      }
+    })
   },
   components: {
     Star
@@ -198,15 +229,7 @@ export default {
     },
     handleEdit(index){
       console.log('编辑index',index);
-      // this.isShow = true
-      this.isEdit = true
-      this.EditData = this.userData.adminAsk
-      this.userData.adminAsk = ''
-      console.log(this.EditData);
-      this.$nextTick(() => {
-                  // console.log(this.$refs.huifubox[index])
-                  this.$refs.huifubox[index].style.display = 'block'
-              })
+      this.userData[index].isShow = true
     },
     handleDelete(index){
       console.log('删除index',index);
@@ -218,34 +241,26 @@ export default {
           this.$message.success('删除成功!')
         }).catch(() => {
           this.$message.info('已取消删除')
-        })      
-    },
-    handleYes1(){
-
-    },
-    handleNo1(index){
-      console.log('取消index',index);
-      this.isEdit = false
-      this.userData.adminAsk = this.EditData
+        })
     },
     handleReply(index){
               console.log('回复index',index);
               console.log(index)
-              this.isShow = true
-              this.$nextTick(() => {
-                  // console.log(this.$refs.huifubox[index])
-                  this.$refs.huifubox[index].style.display = 'block'
-              })
+              this.userData[index].isShow = true
+              // this.$nextTick(() => {
+              //     // console.log(this.$refs.huifubox[index])
+              //     this.$refs.huifubox[index].style.display = 'block'
+              // })
               // this.isShow = true
           },
     handleYes(){
-        
+
     },
     handleNo(index){
-        this.isShow = false
-        this.$refs.huifubox[index].style.display = 'none'
+        this.userData[index].isShow = false
+
     },
-    
+
   }
 };
 </script>
@@ -385,7 +400,7 @@ export default {
     }
   }
   /deep/ .el-input--prefix .el-input__inner {background: #fff;}
-  /deep/ .el-button{ border-radius: 20px; border: 1px solid #409eff; width: 100px; 
+  /deep/ .el-button{ border-radius: 20px; border: 1px solid #409eff; width: 100px;
                        height: 32px; line-height: 8px;}
   .userItem {
     padding: 10px 0px;
@@ -418,7 +433,7 @@ export default {
             .span{ display: block;margin-bottom: 14px;}
             p{ color:#999; }
         }
-        .box-Reply{ display: none;  }
+        .box-Reply{  }
         .reply{ display: block;width: 100%;border: none; background: #fff;}
 }
 .title { padding-left: 6px; border-left: 3px solid #75b8fc;}

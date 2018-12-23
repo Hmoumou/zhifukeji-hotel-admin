@@ -126,48 +126,59 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-.carditem {
-  margin-bottom: 10px;
-}
-.title {
-  padding-left: 6px;
-  border-left: 3px solid #75b8fc;
-}
-.header {
-  font-weight: 700;
-}
-.rightForm {
-    float: right;
-    width: 45%;
-    .detailInfo {
-        width: 60%;
+  .houseTypeCreate{
+    .carditem {
+      margin-bottom: 10px;
     }
-    .describeInfo{
-      /*padding: 20px;*/
+    .title {
+      padding-left: 6px;
+      border-left: 3px solid #75b8fc;
+    }
+    .header {
+      font-weight: 700;
+    }
+    .rightForm {
+      float: right;
+      width: 45%;
+      .detailInfo {
+        width: 60%;
+      }
+      .describeInfo{
+        /*padding: 20px;*/
         width:60%;
+      }
     }
-}
-.leftForm {
-    float: left;
-    margin-left: 1%;
-    margin-bottom: 30px;
-    width: 48%;
-    border-right:1px dashed rgb(204, 197, 197);
-    .detailInfo {
+    .leftForm {
+      float: left;
+      margin-left: 1%;
+      margin-bottom: 30px;
+      width: 48%;
+      border-right:1px dashed rgb(204, 197, 197);
+      .detailInfo {
         width: 60%;
+      }
     }
-}
 
-/deep/ .el-form-item__label{
-    font-weight: 600;
-}
-/deep/ input.el-input__inner{
-    padding-left: 20px;
-    background-color: #eff5ff;
-}
-/deep/ textarea.el-textarea__inner{
-    background-color: #eff5ff;
-}
+    /deep/ .el-form-item__label{
+      font-weight: 600;
+    }
+    /deep/ input.el-input__inner{
+      padding-left: 20px;
+      background-color: #eff5ff;
+    }
+    /deep/ textarea.el-textarea__inner{
+      background-color: #eff5ff;
+    }
+    .el-form-item{
+      margin-bottom: 10px;
+
+    }
+    .el-input-inner {
+      padding-left: 10px;
+
+    }
+  }
+
 </style>
 <style>
 .el-form-item{

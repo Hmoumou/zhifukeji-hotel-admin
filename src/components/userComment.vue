@@ -8,24 +8,24 @@
             <div  v-for="(l,index) in 3" class="text commentitem" :key='index' :model="commentData">
                 <div class="comment-title clearfix">
                     <span class="flr fs12">{{commentData.commentTime}}</span>
-                    <h4>{{commentData.username}}</h4> 
+                    <h4>{{commentData.username}}</h4>
                     <Star :score='commentData.score' />
                     <p class="comment">{{commentData.comment}}</p>
                     <div class="adminAsk" v-if="commentData.adminAsk">
                         <span class="blue fw fs14">回复</span>
                         <p class="fs14">{{commentData.adminAsk}}</p>
                     </div>
-                    <div class="box-Reply"  ref="huifubox"  v-else-if="isShow"> 
-                        <p>{{commentData.adminAsk}}</p>                        
-                        <textarea  :value='commentData.adminAsk' name="adminAsk" class="reply mb5" id="reply" cols="42" rows="5">
+                    <div class="box-Reply"  ref="huifubox"  v-else-if="isShow">
+                        <p>{{commentData.adminAsk}}</p>
+                        <textarea  :value='commentData.adminAsk' name="adminAsk" class="reply mb5"  cols="42" rows="5">
                         </textarea>
                         <el-button @click="handleYes" type='primary'>提交</el-button>
-                        <el-button @click="handleNo(index)">取消</el-button>  
+                        <el-button @click="handleNo(index)">取消</el-button>
                     </div>
                     <el-button  v-else class="flr" type='primary' @click="handleReply(index)">
                         回复
-                    </el-button>                   
-                </div>                   
+                    </el-button>
+                </div>
             </div>
         </el-card>
     </div>
@@ -50,7 +50,7 @@ let commentitems = document.getElementsByClassName('commentitem')
                     commentTime:'2018-01-19',
                     comment:'店家超好非常满意的一次入住，感谢！',
                     adminAsk:'',
-                    score:3.6   
+                    score:3.6
                 }
             }
         },
@@ -65,7 +65,7 @@ let commentitems = document.getElementsByClassName('commentitem')
                 // this.isShow = true
             },
             handleYes(){
-                
+
             },
             handleNo(index){
                 this.isShow = false
@@ -95,7 +95,7 @@ let commentitems = document.getElementsByClassName('commentitem')
             background: #f9fbff;
             margin-bottom: 10px;
             .comment{margin: 10px 0; font-size: 14px;}
-            ul li{float: left;cursor: pointer;}  
+            ul li{float: left;cursor: pointer;}
             ul{list-style: none;}
         }
         .adminAsk{
@@ -123,5 +123,5 @@ let commentitems = document.getElementsByClassName('commentitem')
 .carditem{ margin-bottom: 10px;}
 .title{ padding-left: 6px;border-left:3px solid #75b8fc;}
 .header{font-weight: 700;}
- 
+
 </style>
